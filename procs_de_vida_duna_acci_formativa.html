@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Procés de vida d'una acció formativa | CEFIRE IA i Pensament Computacional </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Moisés Moreno Rando" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Script para copiar el contenido de #textoACopiar al portapapeles (sin alert) -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // Selecciona todos los botones de copiar
+  const botones = document.querySelectorAll('.botonCopiar');
+  const toast = document.createElement('div');
+  
+  // Crear un toast simple para notificaciones
+  toast.textContent = 'Texto copiado ✅';
+  toast.style.cssText = `
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: #111;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all .22s;
+    z-index: 9999;
+    font-size: 0.95rem;
+    pointer-events: none;
+  `;
+  document.body.appendChild(toast);
+
+  // Función para mostrar el toast
+  function showToast(){
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(()=>{
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(8px)';
+    }, 1800);
+  }
+
+  // Función de respaldo para copiar texto usando textarea (para navegadores antiguos o restricciones de iframe)
+  async function fallbackCopyText(text){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px'; // Mueve el textarea fuera de la pantalla
+    document.body.appendChild(ta);
+    ta.select(); // Selecciona el texto en el textarea
+    try { 
+      document.execCommand('copy'); // Intenta copiar
+      document.body.removeChild(ta); // Elimina el textarea
+      return true; 
+    } catch(e){ 
+      document.body.removeChild(ta); 
+      console.error(e); 
+      return false; 
+    }
+  }
+
+  // Función principal para copiar texto al portapapeles
+  async function copyTextToClipboard(text){
+    // Intenta usar la API Clipboard de forma asíncrona
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      try{ 
+        await navigator.clipboard.writeText(text); 
+        return true; 
+      } catch(e){ 
+        console.warn('Error al usar navigator.clipboard.writeText:', e); 
+      }
+    }
+    // Si falla o no está disponible, usa la función de respaldo
+    return await fallbackCopyText(text);
+  }
+
+  // Itera sobre todos los botones para añadir el event listener
+  botones.forEach(boton=>{
+    boton.addEventListener('click', async function(e){
+      e.preventDefault(); // Previene la acción por defecto del botón
+      // Encuentra el ancestro más cercano que sea un 'article' (o '.iDevice_wrapper')
+      const articleWrapper = boton.closest('article.iDevice_wrapper');
+      if (!articleWrapper) {
+          console.error("No se encontró el contenedor 'article.iDevice_wrapper' para el botón.");
+          return;
+      }
+      // Busca el elemento con la clase .textoACopiar dentro de ese contenedor 'article'
+      const textoElem = articleWrapper.querySelector('.textoACopiar');
+      const texto = (textoElem?.innerText || textoElem?.textContent || '').trim(); // Obtiene el texto y lo limpia
+      
+      if(!texto) {
+        console.warn('No hay texto para copiar en este bloque.');
+        return;
+      }
+      
+      const ok = await copyTextToClipboard(texto); // Intenta copiar el texto
+      if(ok) showToast(); // Si se copió con éxito, muestra el toast
+    });
+  });
+});
+</script></head>
+<body class="exe-web-site" id="exe-node-6"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">CEFIRE IA i Pensament Computacional</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">CEFIRE IA i Pensament Computacional</a></li>
+   <li><a href="sessi_teams.html" class="no-ch">Sessió Teams</a></li>
+   <li><a href="dietes_gva.html" class="no-ch">Dietes GVA</a></li>
+   <li class="current-page-parent"><a href="acci_formativa.html" class="current-page-parent daddy">Acció Formativa</a>
+   <ul>
+      <li><a href="introducci.html" class="no-ch">Introducció</a></li>
+      <li><a href="festius.html" class="no-ch">Festius</a></li>
+      <li id="active"><a href="procs_de_vida_duna_acci_formativa.html" class="active daddy">Procés de vida d'una acció formativa</a>
+      <ul>
+         <li><a href="estat_pendent.html" class="daddy">Estat Pendent</a>
+         <ul class="other-section">
+            <li><a href="perfil_gesform.html" class="daddy">Perfil Gesform</a>
+            <ul class="other-section">
+               <li><a href="fse_fons_social_europeu.html" class="no-ch">FSE (Fons Social Europeu)</a></li>
+               <li><a href="paa_pla_anual_dactivitats.html" class="no-ch">PAA (Pla Anual d'Activitats)</a></li>
+               <li><a href="bners.html" class="no-ch">Bàners</a></li>
+            </ul>
+            </li>
+            <li><a href="pressupost.html" class="no-ch">Pressupost</a></li>
+            <li><a href="reviseu.html" class="no-ch">Reviseu</a></li>
+         </ul>
+         </li>
+         <li><a href="estat_proposta_validaci_e_inscripci.html" class="no-ch">Estat Proposta, Validació e Inscripció</a></li>
+         <li><a href="estat_confirmaci.html" class="no-ch">Estat Confirmació</a></li>
+         <li><a href="publicaci_llistat_definitiu.html" class="no-ch">Publicació Llistat Definitiu</a></li>
+         <li><a href="sincronitzaci_de_participants.html" class="no-ch">Sincronització de Participants</a></li>
+         <li><a href="gesti_baixes_i_altes.html" class="no-ch">Gestió Baixes i Altes</a></li>
+         <li><a href="durant_la_formaci.html" class="no-ch">Durant la Formació</a></li>
+         <li><a href="enquesta_davaluaci.html" class="no-ch">Enquesta d'Avaluació</a></li>
+         <li><a href="estat_avaluaci.html" class="no-ch">Estat Avaluació</a></li>
+         <li><a href="estat_certificaci.html" class="no-ch">Estat Certificació</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="gesti_econmica.html" class="daddy">Gestió Econòmica</a>
+   <ul class="other-section">
+      <li><a href="protocolo_minutas.html" class="no-ch">Protocolo Minutas</a></li>
+      <li><a href="protocolo_facturas.html" class="no-ch">Protocolo Facturas</a></li>
+      <li><a href="protocolo_finalizacin_formaciones.html" class="no-ch">Protocolo Finalización Formaciones</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="festius.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="estat_pendent.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Procés de vida d'una acció formativa</h1></header>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id41">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Estats d'una acció formativa</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta41_127_2" class="block iDevice_content">
+<div class="exe-text"><p>🟠 <strong>Pendent</strong>: Acció formativa registrada, revisada per altre company/a, però encara sense validar.</p>
+<p><br />🟡 <strong>Proposta</strong>: L’acció formativa es presenta per a la seua revisió i validació al Director.<br />💚 <strong>Validada Director:</strong> Revisada i acceptada pel Director.<br />🟢 <strong>Validada SGFP: </strong>Validada pel Subdirector General de Formació.<br />🔵 <strong>Inscripció:</strong> Obertura del termini d’inscripció per als participants interessats.</p>
+<p><br />🔷 <strong>Confirmació</strong>: Confirmació de places i admissió de participants.</p>
+<p><br />🟣 <strong>Avaluació</strong>: Desenvolupament i seguiment del procés d’avaluació (enquesta, qualificacions, actes).</p>
+<p><br />🔴 <strong>Certificació: </strong>Es prepara la certificació de l’acció formativa.<br />❤️ <strong>Certificació generada: </strong>Certificats oficials emesos i disponibles</p>
+<p></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id44">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Què he de tindre en compte abans de crear la formació?</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta44_127_2" class="block iDevice_content">
+<div class="exe-text"><p>El primer que has de tenir clar són que l'acció formativa responga a unes necessitats formatives reals i que estiga ben dissenyat. Per a això, és important que es realitze un estudi de necessitats formatives i que es tinga en compte la normativa vigent, per això es fa un formulari de necessitats formatives a tots els centres a principi de curs.</p>
+<p>[CREAR UN FORM DE NECESSITATS DE FORMACIÓ EN INTEL·LIGÈNCIA ARTIFICIAL I PENSAMENT COMPUTACIONAL]</p>
+<p>Arrepleguem la <strong>fitxa de l'acció formativa</strong> (títol, modalitat, hores, núm. participants, dates, ponents, pressupostos, i dates del perfil (objectius, continguts, metodologia, avaluació, materials, etc.)</p>
+<ul>
+<li><strong>FichaCurso_ES_TITULO.docx</strong> [<a href="./docs/FichaCurso_ES_TITULO.docx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>] y <strong>FichaCurso_VA_TITULO.docx </strong>[<a href="./docs/FichaCurso_VA_TITULO.docx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>]</li>
+<li><strong>Curriculum vitae</strong> de la persona o persones que vagen a impartir l'acció formativa.<br /><br /></li>
+<li>Actualitzem el <a href="./docs/PlanificacionFormacion.xlsx" target="_blank" rel="noopener">Full de càlcul</a> <strong>PlanificacionFormacion_25_26.xlsx</strong> amb proposta d'acció formativa per a validació i creació de l'acció formativa.</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id80">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Contratació de Professorat o Ponents</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta80_127_2" class="block iDevice_content">
+<div class="exe-text"><p><span style="text-decoration: underline;"><strong>Assessoria</strong></span>: un assessor/a no por certificar ni cobrar cap acció formativa, per tant, no cal fer la <strong>FITXA ECONÒMICA</strong>, ja que no es paga res.<br /><br /><span style="text-decoration: underline;"><strong>Professorat/Ponent Docent de la GVA</strong></span>: És l'opció més recomanable de totes per a fer pagament, és la que menys problemes dona i només cal fer la <strong>FITXA ECONÒMICA</strong> i especificar-ho en <span style="color: #0000ff;">observacions</span> dins d'aquest document.<br /><br /><span style="text-decoration: underline;"><strong>Professorat/Ponent extern</strong></span>: En aquest cas caldrà especificar-ho en <span style="color: #0000ff;">observacions</span> a la <strong>FITXA ECONÒMICA</strong>, a més de fer un <strong>Informe de necessitat de contractació</strong>, que s'ha d'enviar al Director CEFIRE i al Subdirector General de Formació del Professorat. Aquest informe ha d'estar degudament justificat i caldrà adjuntar el <strong>currículum</strong> de la persona.</p>
+<ul>
+<li>Si impartix menys de 19h: <strong>PONENT</strong></li>
+<li>Si impartix més de 19h: <strong>PROFESSOR</strong></li>
+</ul>
+<p><br /><span style="text-decoration: underline;"><strong>Empresa externa</strong></span> (<em>no es por realitzar cap formació d'este tipus de moment</em>): És l'opció menys recomanable de totes, la que més problemes dona i la que cal estar més justificada. És molt fàcil equivocar-se i que hi haja problemes amb el pagament. Si la formació necessita de <strong>materials</strong> per a poder realitzar-se caldrà especificar-ho a la <strong>FITXA ECONÒMICA</strong> i adjuntar un informe de necessitat de contractació de materials. És necessari omplir els següents documents:</p>
+<ul>
+<li><strong>Informe de necessitat</strong> de contractació de l'empresa o materials</li>
+<li><strong>Autorització d'ús de materials oberts </strong>(<span style="color: #ff0000;">no per a materials</span>)</li>
+<li><strong>Autorització de gravació i difusió </strong>(<span style="color: #ff0000;">no per a materials<span style="color: #000000;">)</span></span></li>
+<li><strong>Factura proforma</strong> de l'empresa degudament complimentada amb totes les dades necessàries. Aquestes dades són:
+<ul>
+<li>Dades de l'empresa</li>
+<li>Dades del CEFIRE</li>
+<li>Dades del curs: CODI i NOM</li>
+<li>Dates de realització de la formació</li>
+<li>Número total d'hores de la formació</li>
+<li>Número de participants</li>
+<li>Import brut</li>
+<li>Import total</li>
+<li>IVA corresponent: cal afegir la coletilla "<strong>Factura exenta de IVA según art. 20.1.9 de la ley 37-1992 de 28 de diciembre</strong>" si l'empresa està exempta d'IVA.</li>
+<li>Número de compte bancari on s'ha de fer el pagament</li>
+</ul>
+</li>
+</ul>
+<p style="padding-left: 60px;"><br />Teniu tota la documentació als següent document <strong>Instrucciones_Facturacion_FACE_2025.pdf</strong> [<a href="./docs/Instrucciones_Facturacion_FACE_2025.pdf" target="_blank" rel="noopener">Descàrrega d'arxiu</a>], que caldrà facilitar a l'empresa, i aplicar les tarifes corresponents <strong>TARIFAS_JUNIO_2025.pdf</strong> [<a href="./docs/TARIFAS_JUNIO_ 2025.pdf" target="_blank" rel="noopener">Descàrrega d'arxiu</a>] y <strong>ANEXO_TARIFAS_2025.pdf</strong> [<a href="./docs/ANEXO_TARIFAS_2025.pdf" target="_blank" rel="noopener">Descàrrega d'arxiu</a>].</p>
+<p style="padding-left: 60px;"><br />Cal detallar les instruccions per a pujar la factura a la plataforma FACE, que és la plataforma de gestió de factures electròniques del Ministeri d'Hisenda. És important que l'empresa tinga un usuari registrat en aquesta plataforma i que puga pujar la factura correctament. Teniu un document explicatiu ací. Cal insistir que la factura <span style="color: #ff0000;">no es pot pujar a la plataforma FACE fins que no s'haja finalitzat la formació</span>.<br /><br /></p>
+<p style="padding-left: 60px;">La factura ha d'estar degudament pujada per l'empresa, <span style="color: #ff0000;">caldrà que et faciliten una còpia de la factura proforma abans de començar la formació</span>. <span style="color: #0000ff;">Una vegada finalitzada la formació, l'empresa haurà de pujar la factura definitiva a la plataforma FACE i enviar-te una còpia de la mateixa</span>. Després caldrà fer la <strong>CONFORMITAT</strong> del servei realitzat per l'empresa, que és un document que certifica que el servei s'ha prestat correctament i que es pot procedir al pagament de la factura. Aquest document s'ha d'enviar a <strong>l'administració del CEFIRE</strong>.</p>
+<p style="padding-left: 60px;">Els materials que es compren per a fer les formacions han de ser <strong><span style="color: #ff0000;">materials NO INVENTARIABLES</span></strong>. No es pot adquirir un llibre, o un dispositiu electrònic, o qualsevol altre material que puga ser inventariat. Els materials <span style="color: #0000ff;">han de ser consumibles</span>, i que no tinguen altre contracte associat amb l'administració com ara paper, cartutxos d'impressora, etc.</p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-nc-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Reconocimiento No comercial Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="festius.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="estat_pendent.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>

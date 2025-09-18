@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Introducció | CEFIRE IA i Pensament Computacional </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Moisés Moreno Rando" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Script para copiar el contenido de #textoACopiar al portapapeles (sin alert) -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // Selecciona todos los botones de copiar
+  const botones = document.querySelectorAll('.botonCopiar');
+  const toast = document.createElement('div');
+  
+  // Crear un toast simple para notificaciones
+  toast.textContent = 'Texto copiado ✅';
+  toast.style.cssText = `
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: #111;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all .22s;
+    z-index: 9999;
+    font-size: 0.95rem;
+    pointer-events: none;
+  `;
+  document.body.appendChild(toast);
+
+  // Función para mostrar el toast
+  function showToast(){
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(()=>{
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(8px)';
+    }, 1800);
+  }
+
+  // Función de respaldo para copiar texto usando textarea (para navegadores antiguos o restricciones de iframe)
+  async function fallbackCopyText(text){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px'; // Mueve el textarea fuera de la pantalla
+    document.body.appendChild(ta);
+    ta.select(); // Selecciona el texto en el textarea
+    try { 
+      document.execCommand('copy'); // Intenta copiar
+      document.body.removeChild(ta); // Elimina el textarea
+      return true; 
+    } catch(e){ 
+      document.body.removeChild(ta); 
+      console.error(e); 
+      return false; 
+    }
+  }
+
+  // Función principal para copiar texto al portapapeles
+  async function copyTextToClipboard(text){
+    // Intenta usar la API Clipboard de forma asíncrona
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      try{ 
+        await navigator.clipboard.writeText(text); 
+        return true; 
+      } catch(e){ 
+        console.warn('Error al usar navigator.clipboard.writeText:', e); 
+      }
+    }
+    // Si falla o no está disponible, usa la función de respaldo
+    return await fallbackCopyText(text);
+  }
+
+  // Itera sobre todos los botones para añadir el event listener
+  botones.forEach(boton=>{
+    boton.addEventListener('click', async function(e){
+      e.preventDefault(); // Previene la acción por defecto del botón
+      // Encuentra el ancestro más cercano que sea un 'article' (o '.iDevice_wrapper')
+      const articleWrapper = boton.closest('article.iDevice_wrapper');
+      if (!articleWrapper) {
+          console.error("No se encontró el contenedor 'article.iDevice_wrapper' para el botón.");
+          return;
+      }
+      // Busca el elemento con la clase .textoACopiar dentro de ese contenedor 'article'
+      const textoElem = articleWrapper.querySelector('.textoACopiar');
+      const texto = (textoElem?.innerText || textoElem?.textContent || '').trim(); // Obtiene el texto y lo limpia
+      
+      if(!texto) {
+        console.warn('No hay texto para copiar en este bloque.');
+        return;
+      }
+      
+      const ok = await copyTextToClipboard(texto); // Intenta copiar el texto
+      if(ok) showToast(); // Si se copió con éxito, muestra el toast
+    });
+  });
+});
+</script></head>
+<body class="exe-web-site" id="exe-node-2"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">CEFIRE IA i Pensament Computacional</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">CEFIRE IA i Pensament Computacional</a></li>
+   <li><a href="sessi_teams.html" class="no-ch">Sessió Teams</a></li>
+   <li><a href="dietes_gva.html" class="no-ch">Dietes GVA</a></li>
+   <li class="current-page-parent"><a href="acci_formativa.html" class="current-page-parent daddy">Acció Formativa</a>
+   <ul>
+      <li id="active"><a href="introducci.html" class="active no-ch">Introducció</a></li>
+      <li><a href="festius.html" class="no-ch">Festius</a></li>
+      <li><a href="procs_de_vida_duna_acci_formativa.html" class="daddy">Procés de vida d'una acció formativa</a>
+      <ul class="other-section">
+         <li><a href="estat_pendent.html" class="daddy">Estat Pendent</a>
+         <ul class="other-section">
+            <li><a href="perfil_gesform.html" class="daddy">Perfil Gesform</a>
+            <ul class="other-section">
+               <li><a href="fse_fons_social_europeu.html" class="no-ch">FSE (Fons Social Europeu)</a></li>
+               <li><a href="paa_pla_anual_dactivitats.html" class="no-ch">PAA (Pla Anual d'Activitats)</a></li>
+               <li><a href="bners.html" class="no-ch">Bàners</a></li>
+            </ul>
+            </li>
+            <li><a href="pressupost.html" class="no-ch">Pressupost</a></li>
+            <li><a href="reviseu.html" class="no-ch">Reviseu</a></li>
+         </ul>
+         </li>
+         <li><a href="estat_proposta_validaci_e_inscripci.html" class="no-ch">Estat Proposta, Validació e Inscripció</a></li>
+         <li><a href="estat_confirmaci.html" class="no-ch">Estat Confirmació</a></li>
+         <li><a href="publicaci_llistat_definitiu.html" class="no-ch">Publicació Llistat Definitiu</a></li>
+         <li><a href="sincronitzaci_de_participants.html" class="no-ch">Sincronització de Participants</a></li>
+         <li><a href="gesti_baixes_i_altes.html" class="no-ch">Gestió Baixes i Altes</a></li>
+         <li><a href="durant_la_formaci.html" class="no-ch">Durant la Formació</a></li>
+         <li><a href="enquesta_davaluaci.html" class="no-ch">Enquesta d'Avaluació</a></li>
+         <li><a href="estat_avaluaci.html" class="no-ch">Estat Avaluació</a></li>
+         <li><a href="estat_certificaci.html" class="no-ch">Estat Certificació</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="gesti_econmica.html" class="daddy">Gestió Econòmica</a>
+   <ul class="other-section">
+      <li><a href="protocolo_minutas.html" class="no-ch">Protocolo Minutas</a></li>
+      <li><a href="protocolo_facturas.html" class="no-ch">Protocolo Facturas</a></li>
+      <li><a href="protocolo_finalizacin_formaciones.html" class="no-ch">Protocolo Finalización Formaciones</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="acci_formativa.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="festius.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Introducció</h1></header>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id1">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Procés de vida d'una acció formativa</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta1_128_2" class="block iDevice_content">
+<div class="exe-text"><p>El procés de vida d’una acció formativa és la següent (<strong><span style="color: #ff0000;">mínim 1'5 mes abans de començar l'acció formativa</span></strong>):</p>
+<p style="padding-left: 120px;"><img src="diagrama_formacio_direccio_transparent.png" alt="Procés de vida d'una formació" title="Procés de vida d'una formació" width="480" height="548" style="float: left;" /></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id2">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Documentació necessària</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_129_2" class="block iDevice_content">
+<div class="exe-text"><style>
+a.boton-hover,
+a.boton-hover:link,
+a.boton-hover:visited,
+a.boton-hover:hover,
+a.boton-hover:focus,
+a.boton-hover:active {
+    text-decoration: none;
+    color: white;
+}
+.boton-hover {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.boton-hover:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+</style>
+<p>La planificació d’una <strong>acció formativa</strong> és clau per al seu bon desenvolupament. Un disseny inadequat pot dificultar tant la gestió com la justificació de les despeses, i fins i tot impedir el seu pagament.</p>
+<p>Tota la documentació del curs s’ha de guardar a la carpeta corresponent del canal de <strong>TEAMS</strong> "Gestió accions formatives", seguint estrictament el protocol d’enviament establit.</p>
+<p><strong></strong></p>
+<p><span style="font-size: 14pt;"><strong>Planificació d'accions formatives</strong></span></p>
+<p>Abans de res, la formació ha de ser autoritzada per la Direcció i pel Subdirector General de Formació Professorat. Disposeu d’un full de càlcul per trametre les propostes, accessible des d’ací:</p>
+<p style="padding-left: 30px;"><a href="./docs/PlanificacionFormacion.xlsx" target="_blank" class="boton-hover" rel="noopener"><strong>Planificació accions formatives</strong></a></p>
+<p>Full de càlcul per a la planificació d'accions formatives i assignació de campanyes. Un cop assignada la campanya, es crea la carpeta de l'acció formativa a la ubicació corresponent.</p>
+<p style="padding-left: 30px;"></p>
+<p><span style="font-size: 14pt;"><strong>Carpeta d'accions formatives</strong></span></p>
+<p>Aquesta divisió es deu al fet que cada curs es finança amb una <strong>campanya</strong> diferent. Per això, cal assignar una campanya al curs abans de començar. A la carpeta es troben les subcarpetes següents (<strong>AAPP</strong>: Administracions Públiques; <strong>FSE</strong>: Fons Social Europeu; <strong>PAA_COST_0</strong>: Plan Anual Activitats a Cost 0)</p>
+<p style="padding-left: 30px;"><img src="mapa-carpetes.png" title="Carpetes en Teams" width="925" height="274" /></p>
+<p>La carpeta ha de portar el <strong>codi</strong> de l'acció formativa assignat per Gesform i el nom de l'assessor/a. </p>
+<p><strong><span style="color: #ff0000;">Cal donar d’alta l'acció formativa a Gesform abans de crear-la.</span></strong> </p>
+<p>Example:</p>
+<p style="padding-left: 60px;">"26XX99XX001" (Any | CEFIRE | Àrea| Nivell | Codi)  + "_" + nom de l'assessor/a.</p>
+<p style="padding-left: 60px;"><img src="carpeta-curso.png" alt="" width="178" height="62" /></p>
+<p>Una vegada creada la carpeta, hem de crear una sèrie de subcarpetes i arxius per a organitzar la documentació del curs. Els documments necessaris són els següents:</p>
+<p><span style="text-decoration: underline;"><strong>DOCUMENTACIÓ INICI ACCIÓ FORMATIVA</strong></span></p>
+<ul style="list-style-type: disc;">
+<li><strong>25COXXNIXXX_FSE_DESIGNA_NOM_PONENT.pdf</strong>: <span style="color: #ff0000;">(Convocatòria FSE)</span> Aquest document és necessari per a designar el ponent de la formació, cal que estiga degudament omplert i signat pel Director i pel Subdirector General. [<a href="./docs/CODI_FSE_DESIGNA_NOM_PONENT.docx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>]</li>
+<li><strong>25COXXNIXXX_DADESPONENTS_NOM.pdf:</strong> Es tracta d'un document on es detallen totes les dades del ponent, cal que estiga correctament omplert i que no tinga cap errada. [<a href="./docs/CODI_DADESPONENTS_NOM.pdf" target="_blank" rel="noopener">Descàrrega d'arxiu</a>].</li>
+<li><strong>25COXXNIXXX_PROPER_NOM.pdf</strong>: És necessari que el ponent es done d'alta en la plataforma PROPER abans de començar la formació i que vos facilite el document de confirmació d'alta ja que aquest document caduca a los 6 mesos. Comproveu que el número de compte siga el mateix que el de les dades que ha facilitat en la fitxa <strong>CODI_DADESPONENTS_NOM.pdf</strong>. <br /><strong>PROPER</strong> en: <strong>https://www.gva.es/es/inicio/procedimientos?id_proc=22648</strong></li>
+<li><strong>25COXXNIXXX_AutorizacionUsoEspacios.pdf: </strong>Autorització per a l'ús de espais, és un document que cal omplir i signar digiltalment per part del assessor/a i responsable del lloc on es va a desenvolupar l'acció formativa en modalitat <span style="color: #ff0000;"><strong>presencial</strong></span>. [<a href="./docs/CODI_AutorizacionUsoEspacios.docx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>]</li>
+<li><strong>25COXXNIXXX_AutorizacionUsoMaterialesAbierto_NOM.pdf:</strong> Autorització per a l'ús de materials oberts, és un document que cal omplir i signar per part del ponent. [<a href="./docs/CODI_AutorizacionUsoMaterialesAbiertos_NOM.pdf" target="_blank" rel="noopener">Descàrrega d'arxiu</a>]</li>
+<li><strong>25COXXNIXXX_AutorizacionGrabacionYDifusion_NOM.pdf:</strong> Autorització per a la gravació i difusió de la formació, és un document que cal omplir i signar per part del ponent. [<a href="./docs/CODI_AutorizacionGrabacionYDifusion_NOM.pdf" target="_blank" rel="noopener">Descàrrega d'arxiu</a>]</li>
+<li><strong>25COXXNIXXX_INFORME_NECESSITATS_NOFUNCIONARI.docx </strong>[<a href="./docs/CODI_INFORME_NECESSITATS_NOFUNCIONARI.docx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>]<strong><br /></strong><strong>25COXXNIXXX_INFORME_NECESSITATS_NOFUNCIONARI.pdf</strong>: Si el <strong><span style="color: #ff0000;">ponent no és funcionari GVA</span></strong> cal fer un informe de perquè estàs fent esta contractació. </li>
+<li><strong>25COXXNIXXX_INFORME_NECESSITATS.docx </strong>[<a href="./docs/CODI_INFORME_NECESSITATS.docx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>]<br /><strong>25COXXNIXXX_INFORME_NECESSITATS.pdf</strong>: Si el <strong><span style="color: #ff0000;">ponent es una Empresa/Autònom</span></strong> o <strong><span style="color: #ff0000;">Entitat Col·laboradora GVA</span></strong> o <strong><span style="color: #ff0000;">Universitat,</span> </strong>cal fer un informe de per què estàs fent esta contractació.  </li>
+<li><strong>25COXXNIXXX_FACTURA_PROFORMA_NOM.pdf</strong></li>
+<li><strong>25COXXNIXXX_FITXAECONOMICA.xlsx </strong>[<a href="./docs/CODI_FITXAECONOMICA.xlsx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>] <strong><br />25COXXNIXXX_FITXAECONOMICA.pdf: </strong>Es tracta de la fitxa econòmica del curs, on es detallen els costos i pressupostos. És imprescindible que aquesta fitxa estiga ben omplerta i no tinga cap errada, les errades de esta fitxa NO ES PODEN CORREGIR ja que s'inicien procesos que fan difícil corregir els canvis que ací es posen.</li>
+</ul>
+<p></p>
+<p><span style="text-decoration: underline;"><strong>DOCUMENTACIÓ A LA FINALITZACIÓ ACCIÓ FORMATIVA</strong></span></p>
+<ul style="list-style-type: disc;">
+<li><strong>25COXXNIXXX-EVIDENCIAS:</strong> Cal crear una <strong><span style="color: #ff0000;">subcarpeta</span> </strong>on es posaran totes les evidències necessàries per a justificar la formació.
+<ul style="list-style-type: disc;">
+<li>25COXXNIXXX_BANER_VA.png </li>
+<li>25COXXNIXXX_BANER_ES.png</li>
+<li>etc...</li>
+</ul>
+</li>
+<li><strong>25COXXNIXXX_Evidencias.pdf</strong>: On es posaran totes les evidències necessàries per a justificar la formació. Baners, publicació en web, fotos, etc...</li>
+<li><strong>25COXXNIXXX_CuadroTexto.docx:</strong> Es tracta d'un formulari que cal emplenar. [<a href="./docs/CODI_CuadroTexto.docx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>]</li>
+<li><strong>25COXXNIXXX_FSE_FichaSeguimiento.docx:</strong> <span style="color: #ff0000;">(Convocatòria FSE)</span> On es posarà la fitxa de seguiment de la formació. [<a href="./docs/CODI_FSE_FichaSeguimiento.docx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>] </li>
+</ul>
+<p></p>
+<ul style="list-style-type: disc;">
+<li><strong>25COXXNIXXX_ACTA_FINAL.pdf:</strong> Acta amb els APTES i NO APTES de la formació, cal que estiga degudament omplerta i signada digitalment per part del ponent, es trau de gesform.</li>
+<li><strong>25COXXNIXXX_ACTA_PONENT.pdf:</strong> Acta signada pel ponent on posa els APTES i NO APTES de la formació, la genera ell/a. [<a href="./docs/CODI_ACTA_PONENT.xlsx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>] </li>
+<li><strong>25COXXNIXXX_FULLSIGNATURES.pdf:</strong> Document amb totes les signatures de la formació escanejades en <strong><span style="color: #ff0000;">modalitat presencial</span></strong>.</li>
+</ul>
+<p>Si ha sigut l'acció formativa amb <strong>Factura</strong>:</p>
+<ul style="list-style-type: disc;">
+<li><strong>25COXXNIXXX_FACE_REGXX.pdf:</strong> Justificant de registre de la factura en FACE.</li>
+</ul>
+<p></p>
+<p>Example<strong> Curs a distáncia amb Minuta No Funcionario:</strong></p>
+<p style="padding-left: 60px;"><img src="carpetes-minuta-no-gva-final.png" width="922" height="554" /></p>
+<p>Example <strong>Curs a distáncia con sessions pressencials per Empreses/Autònoms o Entitat Col·laboradora GVA o Universitats<br /></strong>S'afegix <strong>Factura Proforma</strong> y quan acaba la formació la <strong>factura generada a FACE</strong> y el <strong>justificant de FACE</strong>.<strong></strong></p>
+<p style="padding-left: 60px;"><img src="carpetes-face.png" width="344" height="642" /></p>
+<p><strong>Autorització d'ús de materials de l'acció formativa</strong> i/o si hi ha <strong>Grabació i/o Difusió (per Teams)</strong> o si es <strong>presencial</strong> necessitem <strong>ús d'espais</strong> per a desenvolupar l'acció formativa, necessitem a la carpeta aquests documents:</p>
+<p style="padding-left: 60px;"><img src="autoritzacions.png" width="400" height="205" /></p>
+<p></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-nc-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Reconocimiento No comercial Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="acci_formativa.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="festius.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>

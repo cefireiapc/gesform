@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Protocolo Facturas | CEFIRE IA i Pensament Computacional </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Moisés Moreno Rando" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Script para copiar el contenido de #textoACopiar al portapapeles (sin alert) -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // Selecciona todos los botones de copiar
+  const botones = document.querySelectorAll('.botonCopiar');
+  const toast = document.createElement('div');
+  
+  // Crear un toast simple para notificaciones
+  toast.textContent = 'Texto copiado ✅';
+  toast.style.cssText = `
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: #111;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all .22s;
+    z-index: 9999;
+    font-size: 0.95rem;
+    pointer-events: none;
+  `;
+  document.body.appendChild(toast);
+
+  // Función para mostrar el toast
+  function showToast(){
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(()=>{
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(8px)';
+    }, 1800);
+  }
+
+  // Función de respaldo para copiar texto usando textarea (para navegadores antiguos o restricciones de iframe)
+  async function fallbackCopyText(text){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px'; // Mueve el textarea fuera de la pantalla
+    document.body.appendChild(ta);
+    ta.select(); // Selecciona el texto en el textarea
+    try { 
+      document.execCommand('copy'); // Intenta copiar
+      document.body.removeChild(ta); // Elimina el textarea
+      return true; 
+    } catch(e){ 
+      document.body.removeChild(ta); 
+      console.error(e); 
+      return false; 
+    }
+  }
+
+  // Función principal para copiar texto al portapapeles
+  async function copyTextToClipboard(text){
+    // Intenta usar la API Clipboard de forma asíncrona
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      try{ 
+        await navigator.clipboard.writeText(text); 
+        return true; 
+      } catch(e){ 
+        console.warn('Error al usar navigator.clipboard.writeText:', e); 
+      }
+    }
+    // Si falla o no está disponible, usa la función de respaldo
+    return await fallbackCopyText(text);
+  }
+
+  // Itera sobre todos los botones para añadir el event listener
+  botones.forEach(boton=>{
+    boton.addEventListener('click', async function(e){
+      e.preventDefault(); // Previene la acción por defecto del botón
+      // Encuentra el ancestro más cercano que sea un 'article' (o '.iDevice_wrapper')
+      const articleWrapper = boton.closest('article.iDevice_wrapper');
+      if (!articleWrapper) {
+          console.error("No se encontró el contenedor 'article.iDevice_wrapper' para el botón.");
+          return;
+      }
+      // Busca el elemento con la clase .textoACopiar dentro de ese contenedor 'article'
+      const textoElem = articleWrapper.querySelector('.textoACopiar');
+      const texto = (textoElem?.innerText || textoElem?.textContent || '').trim(); // Obtiene el texto y lo limpia
+      
+      if(!texto) {
+        console.warn('No hay texto para copiar en este bloque.');
+        return;
+      }
+      
+      const ok = await copyTextToClipboard(texto); // Intenta copiar el texto
+      if(ok) showToast(); // Si se copió con éxito, muestra el toast
+    });
+  });
+});
+</script></head>
+<body class="exe-web-site" id="exe-node-23"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">CEFIRE IA i Pensament Computacional</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">CEFIRE IA i Pensament Computacional</a></li>
+   <li><a href="sessi_teams.html" class="no-ch">Sessió Teams</a></li>
+   <li><a href="dietes_gva.html" class="no-ch">Dietes GVA</a></li>
+   <li><a href="acci_formativa.html" class="daddy">Acció Formativa</a>
+   <ul class="other-section">
+      <li><a href="introducci.html" class="no-ch">Introducció</a></li>
+      <li><a href="festius.html" class="no-ch">Festius</a></li>
+      <li><a href="procs_de_vida_duna_acci_formativa.html" class="daddy">Procés de vida d'una acció formativa</a>
+      <ul class="other-section">
+         <li><a href="estat_pendent.html" class="daddy">Estat Pendent</a>
+         <ul class="other-section">
+            <li><a href="perfil_gesform.html" class="daddy">Perfil Gesform</a>
+            <ul class="other-section">
+               <li><a href="fse_fons_social_europeu.html" class="no-ch">FSE (Fons Social Europeu)</a></li>
+               <li><a href="paa_pla_anual_dactivitats.html" class="no-ch">PAA (Pla Anual d'Activitats)</a></li>
+               <li><a href="bners.html" class="no-ch">Bàners</a></li>
+            </ul>
+            </li>
+            <li><a href="pressupost.html" class="no-ch">Pressupost</a></li>
+            <li><a href="reviseu.html" class="no-ch">Reviseu</a></li>
+         </ul>
+         </li>
+         <li><a href="estat_proposta_validaci_e_inscripci.html" class="no-ch">Estat Proposta, Validació e Inscripció</a></li>
+         <li><a href="estat_confirmaci.html" class="no-ch">Estat Confirmació</a></li>
+         <li><a href="publicaci_llistat_definitiu.html" class="no-ch">Publicació Llistat Definitiu</a></li>
+         <li><a href="sincronitzaci_de_participants.html" class="no-ch">Sincronització de Participants</a></li>
+         <li><a href="gesti_baixes_i_altes.html" class="no-ch">Gestió Baixes i Altes</a></li>
+         <li><a href="durant_la_formaci.html" class="no-ch">Durant la Formació</a></li>
+         <li><a href="enquesta_davaluaci.html" class="no-ch">Enquesta d'Avaluació</a></li>
+         <li><a href="estat_avaluaci.html" class="no-ch">Estat Avaluació</a></li>
+         <li><a href="estat_certificaci.html" class="no-ch">Estat Certificació</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li class="current-page-parent"><a href="gesti_econmica.html" class="current-page-parent daddy">Gestió Econòmica</a>
+   <ul>
+      <li><a href="protocolo_minutas.html" class="no-ch">Protocolo Minutas</a></li>
+      <li id="active"><a href="protocolo_facturas.html" class="active no-ch">Protocolo Facturas</a></li>
+      <li><a href="protocolo_finalizacin_formaciones.html" class="no-ch">Protocolo Finalización Formaciones</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="protocolo_minutas.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="protocolo_finalizacin_formaciones.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Protocolo Facturas</h1></header>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id70">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Introducción</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta70_133_2" class="block iDevice_content">
+<div class="exe-text"><p>Las facturas relacionadas con las acciones formativas, mantenimiento y gastos de los CEFIRES deben gestionarse según los procedimientos establecidos por la Conselleria de Educación, Cultura, Universidades y Empleo.</p>
+<table style="width: 100%;" border="1">
+<tbody>
+<tr>
+<td style="width: 100%;">TODAS las facturas asociadas a un curso de formación se tramitarán mediante el aplicativo <strong>GVA CONTRATOS </strong>y se gestionarán desde la <strong>SDGFP</strong>. Es imprescindible enviar toda la documentación requerida <span style="color: #ff0000;">antes del inicio de la formación o prestación del servicio.</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id71">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Documentación necesaria</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta71_134_2" class="block iDevice_content">
+<div class="exe-text"><p><strong><span style="color: #0000ff;">Antes del inicio del curso:</span></strong></p>
+<p><strong>Informe de necesidad de contratación:</strong></p>
+<p style="padding-left: 30px;">Modelo tipo disponible en protocolos.<br />Justificación detallada y motivada de la necesidad.<br />Adjuntar la ficha económica que incluya: Código edición, ponentes, tipo de pago, precios por unidad e importe total.</p>
+<p><strong>Presupuesto o factura proforma:</strong></p>
+<p style="padding-left: 30px;">Para importes superiores a 1.800 euros, solicitar al menos tres presupuestos.<br />El CEFIRE será responsable de custodiar los presupuestos solicitados.<br />Ficha de instrucciones de facturación (FACE): Entregar a la empresa/ponente para guiar el proceso de facturación.</p>
+<p><span style="color: #ff0000;"><strong>Los presupuestos serán necesarios en caso de auditorías futuras. Es fundamental mantener un registro adecuado.</strong></span></p>
+<p></p>
+<p><span style="color: #0000ff;"><strong>Una vez finalizado el curso:</strong></span></p>
+<p><span style="color: #000000;"><strong></strong></span></p>
+<p><span style="color: #000000;"><strong>Certificado de conformidad de servicio prestado:</strong></span></p>
+<p style="padding-left: 30px;"><span style="color: #000000;">Firmado por el/la director/a del CEFIRE.<br />Detallar empresa, número de factura e importe.</span></p>
+<p><span style="color: #000000;"><strong>Factura:</strong></span></p>
+<p style="padding-left: 30px;"><span style="color: #000000;">Guardar una copia en formato <strong>PDF</strong> en la carpeta correspondiente del curso.<br />La empresa debe subir la factura a <strong>FACE</strong>.</span></p>
+<p><strong><span style="color: #ff0000;">Los cuatro documentos mencionados son necesarios para justificar y realizar el pago de la factura.</span></strong></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id72">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Procedimiento para gastos imprevistos</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta72_135_2" class="block iDevice_content">
+<div class="exe-text"><p>En caso de necesidades de escasa cuantía (ejemplo: duplicado de llaves, pilas, etc.), enviar un correo a <strong>gestioeconomicasfp@gva.es</strong>, especificando la necesidad. Desde gestión económica se indicará cómo proceder.</p>
+<p></p>
+<p><strong><span style="color: #0000ff;">Indicaciones específicas</span></strong></p>
+<p><strong>Facturas asociadas a contrato:</strong></p>
+<p style="padding-left: 30px;">Reflejar el número de expediente del contrato.</p>
+<p><br /><strong>Facturas de acciones formativas:</strong></p>
+<p style="padding-left: 30px;">Introducir en GesForm para llevar un registro adecuado.<br />Gastos de funcionamiento no requieren registro en GesForm.</p>
+<p style="padding-left: 30px;"></p>
+<p><span style="color: #ff0000;">Enviar el <strong>informe de necesidad y presupuesto</strong> con al menos <strong>un mes de antelación</strong>, siempre que sea posible.</span></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id73">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Contacto para dudas</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta73_136_2" class="block iDevice_content">
+<div class="exe-text"><p>Correo de gestión económica: <strong>gestioeconomicasfp@gva.es</strong></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-nc-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Reconocimiento No comercial Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="protocolo_minutas.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="protocolo_finalizacin_formaciones.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>
