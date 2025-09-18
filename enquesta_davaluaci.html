@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Enquesta d'Avaluació | CEFIRE IA i Pensament Computacional </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Moisés Moreno Rando" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Script para copiar el contenido de #textoACopiar al portapapeles (sin alert) -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // Selecciona todos los botones de copiar
+  const botones = document.querySelectorAll('.botonCopiar');
+  const toast = document.createElement('div');
+  
+  // Crear un toast simple para notificaciones
+  toast.textContent = 'Texto copiado ✅';
+  toast.style.cssText = `
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: #111;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all .22s;
+    z-index: 9999;
+    font-size: 0.95rem;
+    pointer-events: none;
+  `;
+  document.body.appendChild(toast);
+
+  // Función para mostrar el toast
+  function showToast(){
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(()=>{
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(8px)';
+    }, 1800);
+  }
+
+  // Función de respaldo para copiar texto usando textarea (para navegadores antiguos o restricciones de iframe)
+  async function fallbackCopyText(text){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px'; // Mueve el textarea fuera de la pantalla
+    document.body.appendChild(ta);
+    ta.select(); // Selecciona el texto en el textarea
+    try { 
+      document.execCommand('copy'); // Intenta copiar
+      document.body.removeChild(ta); // Elimina el textarea
+      return true; 
+    } catch(e){ 
+      document.body.removeChild(ta); 
+      console.error(e); 
+      return false; 
+    }
+  }
+
+  // Función principal para copiar texto al portapapeles
+  async function copyTextToClipboard(text){
+    // Intenta usar la API Clipboard de forma asíncrona
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      try{ 
+        await navigator.clipboard.writeText(text); 
+        return true; 
+      } catch(e){ 
+        console.warn('Error al usar navigator.clipboard.writeText:', e); 
+      }
+    }
+    // Si falla o no está disponible, usa la función de respaldo
+    return await fallbackCopyText(text);
+  }
+
+  // Itera sobre todos los botones para añadir el event listener
+  botones.forEach(boton=>{
+    boton.addEventListener('click', async function(e){
+      e.preventDefault(); // Previene la acción por defecto del botón
+      // Encuentra el ancestro más cercano que sea un 'article' (o '.iDevice_wrapper')
+      const articleWrapper = boton.closest('article.iDevice_wrapper');
+      if (!articleWrapper) {
+          console.error("No se encontró el contenedor 'article.iDevice_wrapper' para el botón.");
+          return;
+      }
+      // Busca el elemento con la clase .textoACopiar dentro de ese contenedor 'article'
+      const textoElem = articleWrapper.querySelector('.textoACopiar');
+      const texto = (textoElem?.innerText || textoElem?.textContent || '').trim(); // Obtiene el texto y lo limpia
+      
+      if(!texto) {
+        console.warn('No hay texto para copiar en este bloque.');
+        return;
+      }
+      
+      const ok = await copyTextToClipboard(texto); // Intenta copiar el texto
+      if(ok) showToast(); // Si se copió con éxito, muestra el toast
+    });
+  });
+});
+</script></head>
+<body class="exe-web-site" id="exe-node-19"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">CEFIRE IA i Pensament Computacional</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">CEFIRE IA i Pensament Computacional</a></li>
+   <li><a href="sessi_teams.html" class="no-ch">Sessió Teams</a></li>
+   <li><a href="dietes_gva.html" class="no-ch">Dietes GVA</a></li>
+   <li class="current-page-parent"><a href="acci_formativa.html" class="current-page-parent daddy">Acció Formativa</a>
+   <ul>
+      <li><a href="introducci.html" class="no-ch">Introducció</a></li>
+      <li><a href="festius.html" class="no-ch">Festius</a></li>
+      <li class="current-page-parent"><a href="procs_de_vida_duna_acci_formativa.html" class="current-page-parent daddy">Procés de vida d'una acció formativa</a>
+      <ul>
+         <li><a href="estat_pendent.html" class="daddy">Estat Pendent</a>
+         <ul class="other-section">
+            <li><a href="perfil_gesform.html" class="daddy">Perfil Gesform</a>
+            <ul class="other-section">
+               <li><a href="fse_fons_social_europeu.html" class="no-ch">FSE (Fons Social Europeu)</a></li>
+               <li><a href="paa_pla_anual_dactivitats.html" class="no-ch">PAA (Pla Anual d'Activitats)</a></li>
+               <li><a href="bners.html" class="no-ch">Bàners</a></li>
+            </ul>
+            </li>
+            <li><a href="pressupost.html" class="no-ch">Pressupost</a></li>
+            <li><a href="reviseu.html" class="no-ch">Reviseu</a></li>
+         </ul>
+         </li>
+         <li><a href="estat_proposta_validaci_e_inscripci.html" class="no-ch">Estat Proposta, Validació e Inscripció</a></li>
+         <li><a href="estat_confirmaci.html" class="no-ch">Estat Confirmació</a></li>
+         <li><a href="publicaci_llistat_definitiu.html" class="no-ch">Publicació Llistat Definitiu</a></li>
+         <li><a href="sincronitzaci_de_participants.html" class="no-ch">Sincronització de Participants</a></li>
+         <li><a href="gesti_baixes_i_altes.html" class="no-ch">Gestió Baixes i Altes</a></li>
+         <li><a href="durant_la_formaci.html" class="no-ch">Durant la Formació</a></li>
+         <li id="active"><a href="enquesta_davaluaci.html" class="active no-ch">Enquesta d'Avaluació</a></li>
+         <li><a href="estat_avaluaci.html" class="no-ch">Estat Avaluació</a></li>
+         <li><a href="estat_certificaci.html" class="no-ch">Estat Certificació</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="gesti_econmica.html" class="daddy">Gestió Econòmica</a>
+   <ul class="other-section">
+      <li><a href="protocolo_minutas.html" class="no-ch">Protocolo Minutas</a></li>
+      <li><a href="protocolo_facturas.html" class="no-ch">Protocolo Facturas</a></li>
+      <li><a href="protocolo_finalizacin_formaciones.html" class="no-ch">Protocolo Finalización Formaciones</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="durant_la_formaci.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="estat_avaluaci.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Enquesta d'Avaluació</h1></header>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id57">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Avaluació amb Forms</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta57_128_2" class="block iDevice_content">
+<div class="exe-text"><p>Recordeu que <span style="color: #ff0000;">dos setmanes abans de finalitzar l'acció formativa</span> hem de passar l'enquesta d'avaluació <strong>duplicant</strong> aquesta enquesta des de Forms.</p>
+<p>Heu de <strong>modificar</strong> algunes preguntes, com el <strong>nom del Professor/Ponent</strong>.</p>
+<p>Una vegada duplicat el Form per aquesta acció formativa <strong>si s'ha ultilitzat Aules</strong> podem <strong>incrustar</strong> aquesta enquesta dins del propi Aules:</p>
+<p style="text-align: center;"><img src="image86.png" alt="" width="514" height="260" /></p>
+<p style="text-align: center;"><img src="image78.png" alt="" width="892" height="112" /></p>
+<p></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id58">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Example de Codi (hem de canviar l'enllaç de l'enquesta Form)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta58_129_2" class="block iDevice_content">
+<div class="exe-text"><p><button class="botonCopiar">📋 Copiar texto</button></p>
+<p class="textoACopiar">&lt;p&gt; &lt;iframe style="border: none; max-width: 100%; max-height: 100vh;"src="https://forms.office.com/Pages/ResponsePage.aspx?id=FBHdc33vx0CGaVadMufim8XFLer8UvFFqx-EJlhzYBpUNEczNUdCVENONVg3REVJWExSWjIzNFlZNi4u&amp;amp;embed=true" width="100%;" height="800px" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen="allowfullscreen"&gt; &lt;/iframe&gt;&lt;/p&gt;</p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id59">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Seguim a Aules</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta59_130_2" class="block iDevice_content">
+<div class="exe-text"><p style="text-align: center;"><img src="image54.png" alt="" width="829" height="254" /></p>
+<p style="text-align: left;">Configuració del formulari.</p>
+<p style="text-align: center;"><img src="image41.png" alt="" width="912" height="473" /></p>
+<p style="text-align: left;">Enviarem un missatge en el <strong>foro de avisos</strong>, demanant que emplenen l'enquesta. </p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id84">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Missatge Foro de Avisos (Aules)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta84_131_2" class="block iDevice_content">
+<div class="exe-text"><p><button class="botonCopiar">📋 Copiar texto</button></p>
+<p class="textoACopiar">Bon dia a tots i totes, <br /><br />Ens trobem en la recta final d'este curs que finalitza el dia  XX de XX.  <br /><br />Els agraïm per haver participat en el nostre curs i recordem que es tracta d'un curs molt demandat i s'ha d'assumir el compromís de seguir-lo. <br /> <br />A més, volem sol·licitar la seua col·laboració perquè emplenen l'enquesta de valoració, que trobareu en l'última secció d'Aules. La seua retroalimentació és fonamental per a nosaltres, ja que ens ajuda a millorar les nostres accions formatives i a oferir-los una millor experiència en futurs cursos. <br /> <br />Agraïm per endavant el seu temps i col·laboració. <br /><br />Salutacions. <br /><br />------------------------------------------------------------------------------------------------------- <br /><br />Buenas a todos y todas, <br /><br />Nos encontramos en la recta final de este curso que finaliza el día XX de XX. <br /><br />Les agradecemos haber participado en nuestro curso y recordamos que se trata de un curso muy demandado y se debe asumir el compromiso de seguirlo. <br /><br />Además, queremos solicitar su colaboración para que rellenen la encuesta de valoración, que encontraréis en la última sección. Su retroalimentación es fundamental para nosotros, ya que nos ayuda a mejorar nuestras acciones formativas y a ofrecerles una mejor experiencia en futuros cursos. <br /><br />Agradecemos de antemano su tiempo y colaboración. <br /><br />Un saludo. </p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id60">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Emmagatzemament de resultats de l'enquesta d'avaluació</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta60_131_2" class="block iDevice_content">
+<div class="exe-text"><p>Uns dies abans d'acabar la formació revisarem si han emplenat l'enquesta de valoració i si cal, recordarem que encara són a temps d'acabar les tasques pendents per a certificar i que si no han emplenat l'enquesta de valoració, per favor que el facen.</p>
+<p>En Forms, deixarem l'<strong>informe</strong> amb la informació general de les respostes en la carpeta <strong>CODI_Evidencias</strong> i <span style="color: #ff0000;">una còpia</span> en la carpeta <strong>ENQUESTES DE VALORACIO</strong> y carpeta <strong>INFORMES</strong>. </p>
+<p style="text-align: center;"><img src="image26.png" alt="" width="154" height="48" /></p>
+<p style="text-align: center;"><img src="image3.png" alt="" width="283" height="173" />       <img src="image66.png" alt="" width="245" height="177" /></p>
+<p style="text-align: left;">En Forms, deixarem la informació general de les respostes en la carpeta <strong>CODI_Evidencias</strong> i <span style="color: #ff0000;">una còpia</span> en la carpeta <strong>ENQUESTES DE VALORACIO</strong> y carpeta <strong>RESULTATS INDIVIDUALS</strong>. </p>
+<p style="text-align: center;"><img src="image26.png" alt="" width="154" height="48" /></p>
+<p style="text-align: center;"><img src="image55.png" alt="" width="276" height="250" />    </p>
+<p style="text-align: center;"><img src="image15.png" alt="" width="558" height="58" /></p>
+<p style="text-align: center;"></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id61">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Recordeu com ha de quedar a Teams</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta61_132_2" class="block iDevice_content">
+<div class="exe-text"><p style="text-align: center;"><img src="mapa-carpetes.png" alt="" width="1126" height="334" /></p>
+<p style="text-align: center;"></p>
+<p style="text-align: center;"><img src="carpetes-minuta-no-gva-final.png" alt="" width="1033" height="621" /></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-nc-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Reconocimiento No comercial Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="durant_la_formaci.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="estat_avaluaci.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>

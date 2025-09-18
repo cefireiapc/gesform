@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Gestió Econòmica | CEFIRE IA i Pensament Computacional </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Moisés Moreno Rando" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Script para copiar el contenido de #textoACopiar al portapapeles (sin alert) -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // Selecciona todos los botones de copiar
+  const botones = document.querySelectorAll('.botonCopiar');
+  const toast = document.createElement('div');
+  
+  // Crear un toast simple para notificaciones
+  toast.textContent = 'Texto copiado ✅';
+  toast.style.cssText = `
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: #111;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all .22s;
+    z-index: 9999;
+    font-size: 0.95rem;
+    pointer-events: none;
+  `;
+  document.body.appendChild(toast);
+
+  // Función para mostrar el toast
+  function showToast(){
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(()=>{
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(8px)';
+    }, 1800);
+  }
+
+  // Función de respaldo para copiar texto usando textarea (para navegadores antiguos o restricciones de iframe)
+  async function fallbackCopyText(text){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px'; // Mueve el textarea fuera de la pantalla
+    document.body.appendChild(ta);
+    ta.select(); // Selecciona el texto en el textarea
+    try { 
+      document.execCommand('copy'); // Intenta copiar
+      document.body.removeChild(ta); // Elimina el textarea
+      return true; 
+    } catch(e){ 
+      document.body.removeChild(ta); 
+      console.error(e); 
+      return false; 
+    }
+  }
+
+  // Función principal para copiar texto al portapapeles
+  async function copyTextToClipboard(text){
+    // Intenta usar la API Clipboard de forma asíncrona
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      try{ 
+        await navigator.clipboard.writeText(text); 
+        return true; 
+      } catch(e){ 
+        console.warn('Error al usar navigator.clipboard.writeText:', e); 
+      }
+    }
+    // Si falla o no está disponible, usa la función de respaldo
+    return await fallbackCopyText(text);
+  }
+
+  // Itera sobre todos los botones para añadir el event listener
+  botones.forEach(boton=>{
+    boton.addEventListener('click', async function(e){
+      e.preventDefault(); // Previene la acción por defecto del botón
+      // Encuentra el ancestro más cercano que sea un 'article' (o '.iDevice_wrapper')
+      const articleWrapper = boton.closest('article.iDevice_wrapper');
+      if (!articleWrapper) {
+          console.error("No se encontró el contenedor 'article.iDevice_wrapper' para el botón.");
+          return;
+      }
+      // Busca el elemento con la clase .textoACopiar dentro de ese contenedor 'article'
+      const textoElem = articleWrapper.querySelector('.textoACopiar');
+      const texto = (textoElem?.innerText || textoElem?.textContent || '').trim(); // Obtiene el texto y lo limpia
+      
+      if(!texto) {
+        console.warn('No hay texto para copiar en este bloque.');
+        return;
+      }
+      
+      const ok = await copyTextToClipboard(texto); // Intenta copiar el texto
+      if(ok) showToast(); // Si se copió con éxito, muestra el toast
+    });
+  });
+});
+</script></head>
+<body class="exe-web-site" id="exe-node-21"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">CEFIRE IA i Pensament Computacional</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">CEFIRE IA i Pensament Computacional</a></li>
+   <li><a href="sessi_teams.html" class="no-ch">Sessió Teams</a></li>
+   <li><a href="dietes_gva.html" class="no-ch">Dietes GVA</a></li>
+   <li><a href="acci_formativa.html" class="daddy">Acció Formativa</a>
+   <ul class="other-section">
+      <li><a href="introducci.html" class="no-ch">Introducció</a></li>
+      <li><a href="festius.html" class="no-ch">Festius</a></li>
+      <li><a href="procs_de_vida_duna_acci_formativa.html" class="daddy">Procés de vida d'una acció formativa</a>
+      <ul class="other-section">
+         <li><a href="estat_pendent.html" class="daddy">Estat Pendent</a>
+         <ul class="other-section">
+            <li><a href="perfil_gesform.html" class="daddy">Perfil Gesform</a>
+            <ul class="other-section">
+               <li><a href="fse_fons_social_europeu.html" class="no-ch">FSE (Fons Social Europeu)</a></li>
+               <li><a href="paa_pla_anual_dactivitats.html" class="no-ch">PAA (Pla Anual d'Activitats)</a></li>
+               <li><a href="bners.html" class="no-ch">Bàners</a></li>
+            </ul>
+            </li>
+            <li><a href="pressupost.html" class="no-ch">Pressupost</a></li>
+            <li><a href="reviseu.html" class="no-ch">Reviseu</a></li>
+         </ul>
+         </li>
+         <li><a href="estat_proposta_validaci_e_inscripci.html" class="no-ch">Estat Proposta, Validació e Inscripció</a></li>
+         <li><a href="estat_confirmaci.html" class="no-ch">Estat Confirmació</a></li>
+         <li><a href="publicaci_llistat_definitiu.html" class="no-ch">Publicació Llistat Definitiu</a></li>
+         <li><a href="sincronitzaci_de_participants.html" class="no-ch">Sincronització de Participants</a></li>
+         <li><a href="gesti_baixes_i_altes.html" class="no-ch">Gestió Baixes i Altes</a></li>
+         <li><a href="durant_la_formaci.html" class="no-ch">Durant la Formació</a></li>
+         <li><a href="enquesta_davaluaci.html" class="no-ch">Enquesta d'Avaluació</a></li>
+         <li><a href="estat_avaluaci.html" class="no-ch">Estat Avaluació</a></li>
+         <li><a href="estat_certificaci.html" class="no-ch">Estat Certificació</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li id="active"><a href="gesti_econmica.html" class="active daddy">Gestió Econòmica</a>
+   <ul>
+      <li><a href="protocolo_minutas.html" class="no-ch">Protocolo Minutas</a></li>
+      <li><a href="protocolo_facturas.html" class="no-ch">Protocolo Facturas</a></li>
+      <li><a href="protocolo_finalizacin_formaciones.html" class="no-ch">Protocolo Finalización Formaciones</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="estat_certificaci.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="protocolo_minutas.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Gestió Econòmica</h1></header>
+<article class="iDevice_wrapper textIdevice" id="id65">
+<div class="iDevice emphasis0" >
+<div id="ta65_128_2" class="block iDevice_content">
+<div class="exe-text"><p>A la carpeta s'ha d'assegurar que es contenen el següents documentos:</p>
+<ul>
+<li><strong>Designa</strong> signat pel Subdirector General de Formació del professorat. <br /><strong>CODI_FSE_DESIGNA_NOM_PONENT.pdf</strong><strong><br /><br /></strong></li>
+<li><strong>Certifica</strong> signat pel Subdirector General de Formació del professorat.<br /><strong>CODI_CERTIFICA.pdf</strong><br /><br /></li>
+<li><strong>Contracte menor</strong> si en te signat per MacEvoy.<br /><strong>CODI_CONTRATOMENOR_NOMEMPRESA.pdf</strong><br /><br /></li>
+<li><strong>Evidències</strong>. Les evidencies han d'anar amb un PDF totes juntes.<br /><strong>CODI_Evidencias.pdf</strong><br /><br /></li>
+<li><strong>Factura proforma</strong>.<br /><strong>CODI_FACTURA_PROFORMA_NOMBRE.pdf</strong><br /><br /></li>
+<li><strong>Fitxa econòmica</strong> correctamente signada i revisada. Cal que la Fitxa econòmica estiga signada per l'assessor i que concorde exactamente el pressupost de la formació amb el Gesform.<br />És imprescindible indicar a la fitxa econòmica <span style="color: #ff0000;">si són funcionaris o no</span>, i assegurar-se que els codis són els correctes a Gesform. <span style="color: #ff0000;"><strong>23302</strong> si són funcionaris i <strong>226.06</strong> si són factures o no són funcionaris.<br /><strong><span style="color: #000000;">CODI_FITXAECONOMICA.pdf<br /></span></strong><br /></span></li>
+<li><strong>Acta final</strong> amb tots els participants signada.<br /><strong>CODI_ACTA_FINAL.pdf</strong><br /><br /></li>
+<li><strong>Minuta</strong> del ponent signada digitalment.<br /><strong>CODI_MINUTA_NOM_PONENT.pdf</strong><br /><br /></li>
+<li><strong>Fulls de signatures</strong> signats pel ponent de l'acció formativa (modalitat presencial). Si la formació és <span style="color: #ff0000;">online</span> es pujarà un fitxer .txt amb el el següent nom <strong>ONLINE_NO_HAY_FIRMAS.txt</strong>, que estarà buit.<br /><strong>CODI_FULLSIGNATURES.pdf<br /><br /></strong></li>
+<li><strong>CODI_CuadroTexto.docx</strong> amb les dades emplenades.</li>
+</ul></div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-nc-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Reconocimiento No comercial Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="estat_certificaci.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="protocolo_minutas.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>

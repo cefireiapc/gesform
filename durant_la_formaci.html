@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Durant la Formació | CEFIRE IA i Pensament Computacional </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Moisés Moreno Rando" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Script para copiar el contenido de #textoACopiar al portapapeles (sin alert) -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // Selecciona todos los botones de copiar
+  const botones = document.querySelectorAll('.botonCopiar');
+  const toast = document.createElement('div');
+  
+  // Crear un toast simple para notificaciones
+  toast.textContent = 'Texto copiado ✅';
+  toast.style.cssText = `
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: #111;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all .22s;
+    z-index: 9999;
+    font-size: 0.95rem;
+    pointer-events: none;
+  `;
+  document.body.appendChild(toast);
+
+  // Función para mostrar el toast
+  function showToast(){
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(()=>{
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(8px)';
+    }, 1800);
+  }
+
+  // Función de respaldo para copiar texto usando textarea (para navegadores antiguos o restricciones de iframe)
+  async function fallbackCopyText(text){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px'; // Mueve el textarea fuera de la pantalla
+    document.body.appendChild(ta);
+    ta.select(); // Selecciona el texto en el textarea
+    try { 
+      document.execCommand('copy'); // Intenta copiar
+      document.body.removeChild(ta); // Elimina el textarea
+      return true; 
+    } catch(e){ 
+      document.body.removeChild(ta); 
+      console.error(e); 
+      return false; 
+    }
+  }
+
+  // Función principal para copiar texto al portapapeles
+  async function copyTextToClipboard(text){
+    // Intenta usar la API Clipboard de forma asíncrona
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      try{ 
+        await navigator.clipboard.writeText(text); 
+        return true; 
+      } catch(e){ 
+        console.warn('Error al usar navigator.clipboard.writeText:', e); 
+      }
+    }
+    // Si falla o no está disponible, usa la función de respaldo
+    return await fallbackCopyText(text);
+  }
+
+  // Itera sobre todos los botones para añadir el event listener
+  botones.forEach(boton=>{
+    boton.addEventListener('click', async function(e){
+      e.preventDefault(); // Previene la acción por defecto del botón
+      // Encuentra el ancestro más cercano que sea un 'article' (o '.iDevice_wrapper')
+      const articleWrapper = boton.closest('article.iDevice_wrapper');
+      if (!articleWrapper) {
+          console.error("No se encontró el contenedor 'article.iDevice_wrapper' para el botón.");
+          return;
+      }
+      // Busca el elemento con la clase .textoACopiar dentro de ese contenedor 'article'
+      const textoElem = articleWrapper.querySelector('.textoACopiar');
+      const texto = (textoElem?.innerText || textoElem?.textContent || '').trim(); // Obtiene el texto y lo limpia
+      
+      if(!texto) {
+        console.warn('No hay texto para copiar en este bloque.');
+        return;
+      }
+      
+      const ok = await copyTextToClipboard(texto); // Intenta copiar el texto
+      if(ok) showToast(); // Si se copió con éxito, muestra el toast
+    });
+  });
+});
+</script></head>
+<body class="exe-web-site" id="exe-node-26"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">CEFIRE IA i Pensament Computacional</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">CEFIRE IA i Pensament Computacional</a></li>
+   <li><a href="sessi_teams.html" class="no-ch">Sessió Teams</a></li>
+   <li><a href="dietes_gva.html" class="no-ch">Dietes GVA</a></li>
+   <li class="current-page-parent"><a href="acci_formativa.html" class="current-page-parent daddy">Acció Formativa</a>
+   <ul>
+      <li><a href="introducci.html" class="no-ch">Introducció</a></li>
+      <li><a href="festius.html" class="no-ch">Festius</a></li>
+      <li class="current-page-parent"><a href="procs_de_vida_duna_acci_formativa.html" class="current-page-parent daddy">Procés de vida d'una acció formativa</a>
+      <ul>
+         <li><a href="estat_pendent.html" class="daddy">Estat Pendent</a>
+         <ul class="other-section">
+            <li><a href="perfil_gesform.html" class="daddy">Perfil Gesform</a>
+            <ul class="other-section">
+               <li><a href="fse_fons_social_europeu.html" class="no-ch">FSE (Fons Social Europeu)</a></li>
+               <li><a href="paa_pla_anual_dactivitats.html" class="no-ch">PAA (Pla Anual d'Activitats)</a></li>
+               <li><a href="bners.html" class="no-ch">Bàners</a></li>
+            </ul>
+            </li>
+            <li><a href="pressupost.html" class="no-ch">Pressupost</a></li>
+            <li><a href="reviseu.html" class="no-ch">Reviseu</a></li>
+         </ul>
+         </li>
+         <li><a href="estat_proposta_validaci_e_inscripci.html" class="no-ch">Estat Proposta, Validació e Inscripció</a></li>
+         <li><a href="estat_confirmaci.html" class="no-ch">Estat Confirmació</a></li>
+         <li><a href="publicaci_llistat_definitiu.html" class="no-ch">Publicació Llistat Definitiu</a></li>
+         <li><a href="sincronitzaci_de_participants.html" class="no-ch">Sincronització de Participants</a></li>
+         <li><a href="gesti_baixes_i_altes.html" class="no-ch">Gestió Baixes i Altes</a></li>
+         <li id="active"><a href="durant_la_formaci.html" class="active no-ch">Durant la Formació</a></li>
+         <li><a href="enquesta_davaluaci.html" class="no-ch">Enquesta d'Avaluació</a></li>
+         <li><a href="estat_avaluaci.html" class="no-ch">Estat Avaluació</a></li>
+         <li><a href="estat_certificaci.html" class="no-ch">Estat Certificació</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="gesti_econmica.html" class="daddy">Gestió Econòmica</a>
+   <ul class="other-section">
+      <li><a href="protocolo_minutas.html" class="no-ch">Protocolo Minutas</a></li>
+      <li><a href="protocolo_facturas.html" class="no-ch">Protocolo Facturas</a></li>
+      <li><a href="protocolo_finalizacin_formaciones.html" class="no-ch">Protocolo Finalización Formaciones</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="gesti_baixes_i_altes.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="enquesta_davaluaci.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Durant la Formació</h1></header>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id81">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Missatge benvinguda</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta81_128_2" class="block iDevice_content">
+<div class="exe-text"><p><button class="botonCopiar">📋 Copiar texto</button></p>
+<p class="textoACopiar">Benvinguts i benvingudes<br /><br />Bon dia a tots i totes,<br /><br />Soc XXX, assessor/a de formació del CEFIRE Específica d'Intel·ligència Artificial i Pensament Computacional i responsable de la coordinació i gestió d’aquesta formació.<br /><br />Us donem la benvinguda al curs XXXXXX, que comença avui i finalitza el dia DD/MM/AA.<br /><br />Els Professors/Ponents/Tutors del curs són XXXX, XXXXX, qui us guiaran i acompanyaran al llarg d’aquesta formació.<br /><br />Desitgem que aquest curs us siga útil i que pugueu aprofitar al màxim tots els continguts i recursos que oferim.<br /><br />És important entrar en els primers 3 dies en Aules i actualitzar el vostre perfil del curs perquè no es procedisca a la baixa automàtica amb penalització.<br /><br />Per a qualsevol dubte o suggeriment, no dubteu a contactar amb nosaltres: estarem encantats d’atendre-vos i quedem totalment a la vostra disposició.<br /><br />A més, en cas que tingueu alguna incidència tècnica o relacionada amb la coordinació de la formació, us agrairem que ens la comuniqueu al correu electrònic nombre@edu.gva.es.<br /><br />Comencem! Ànim! 💪<br /><br />-------------------------------------------------------<br /><br />Bienvenidos y bienvenidas<br /><br />Buenos días a todos y todas,<br /><br />Soy XXX, asesor/a de formación del CEFIRE Específica de Inteligencia Artificial y Pensamiento Computacional y responsable de la coordinación y gestión de esta formación.<br /><br />Os damos la bienvenida en el curso XXXXXX, que empieza hoy y finaliza el día DD/MM/AA.<br /><br />Los Profesores/Ponentes/Tutores del curso son XXXX, XXXXX, quién os guiarán y acompañarán a lo largo de esta formación.<br /><br />Deseamos que este curso os sea útil y que podáis aprovechar al máximo todos los contenidos y recursos que ofrezcamos.<br /><br />Es importante entrar en los primeros 3 días en Aules y actualizar vuestro perfil del curso para que no se proceda a la baja automática con penalización.<br /><br />Para cualquier duda o sugerencia, no dudáis a contactar con nosotros: estaremos encantados de atender-os y quedamos totalmente a vuestra disposición.<br /><br />Además, en caso de que tengáis alguna incidencia técnica o relacionada con la coordinación de la formación, os agradeceremos que nos la comunicáis al correo electrónico nombre@edu.gva.es.<br /><br />¡Empezamos! ¡Ánimo! 💪<br /><br /></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id82">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">La primera setmana - Seguiment participants de la formació</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta82_129_2" class="block iDevice_content">
+<div class="exe-text"><ul>
+<li>Cal revisar que tots els participants de la formació han entrat al curs d'Aules, en cas que s'utilitze en la formació. Aquesta tasca pot fer-se en col·laboració amb el Professorat/Ponent de la formació.</li>
+<li>Als participants que no han entrat al curs d'Aules, se les enviarà un missatge de correu, preguntant si volen continuar amb la formació i que en cas de no entrar en 1 dia se'ls donarà de baixa.</li>
+<li>En cas que les persones que no havien entrat ens confirmen que no volen continuar amb la formació o no diguen res, se'ls donarà de baixa en Gesform i es sincronitzarà amb Aules.</li>
+<li>Avisarem a la primera persona que es troba en llista d'espera per correu, diguen-li que ha sigut acceptada. Hem de seleccionar-la en Gesform i també sincronitzar en Aules, perquè aparega al curs.</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id83">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Seguiment funcionament de la formació</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta83_130_2" class="block iDevice_content">
+<div class="exe-text"><p>Com assessors hem d'estar pendents del funcionament de la formació.</p>
+<p><br /><strong>Foros</strong>: El ponent ha de contestar les preguntes dels foros en un termini màxim d'un dia.</p>
+<p><br />En cas d'<strong>incidències</strong> en la formació, hem de resoldre-les de manera immediata. Aquestes incidències poden ser de molts tipus, per exemple que no poden entrar al curs d'Aules. A vegades és molt més ràpid organitzar una videoconferència per Teams o una trucada per telèfon per a localitzar el problema, que per correu electrònic.</p>
+<p><br /><strong>Seguiment de la formació per part dels participants</strong>: Estarem en contacte amb el Professor/Ponent/Tutor i farem el seguiment dels participants: Si estan seguint les activitats proposades. Assistint a les sessions síncrones en cas de tindre i ser obligatòria l'assistència síncrona. Si ens trobem amb participants que no estan seguint la formació, enviarem un missatge en el foro d'avisos on els recordarem que quan una persona accepta una formació s'adquireix un compromís i que estan ocupant una plaça d'una formació amb alta demanda que una altra persona podria estar aprofitant.</p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-nc-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Reconocimiento No comercial Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="gesti_baixes_i_altes.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="enquesta_davaluaci.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>

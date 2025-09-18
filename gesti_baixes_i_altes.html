@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Gestió Baixes i Altes | CEFIRE IA i Pensament Computacional </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Moisés Moreno Rando" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Script para copiar el contenido de #textoACopiar al portapapeles (sin alert) -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // Selecciona todos los botones de copiar
+  const botones = document.querySelectorAll('.botonCopiar');
+  const toast = document.createElement('div');
+  
+  // Crear un toast simple para notificaciones
+  toast.textContent = 'Texto copiado ✅';
+  toast.style.cssText = `
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: #111;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all .22s;
+    z-index: 9999;
+    font-size: 0.95rem;
+    pointer-events: none;
+  `;
+  document.body.appendChild(toast);
+
+  // Función para mostrar el toast
+  function showToast(){
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(()=>{
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(8px)';
+    }, 1800);
+  }
+
+  // Función de respaldo para copiar texto usando textarea (para navegadores antiguos o restricciones de iframe)
+  async function fallbackCopyText(text){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px'; // Mueve el textarea fuera de la pantalla
+    document.body.appendChild(ta);
+    ta.select(); // Selecciona el texto en el textarea
+    try { 
+      document.execCommand('copy'); // Intenta copiar
+      document.body.removeChild(ta); // Elimina el textarea
+      return true; 
+    } catch(e){ 
+      document.body.removeChild(ta); 
+      console.error(e); 
+      return false; 
+    }
+  }
+
+  // Función principal para copiar texto al portapapeles
+  async function copyTextToClipboard(text){
+    // Intenta usar la API Clipboard de forma asíncrona
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      try{ 
+        await navigator.clipboard.writeText(text); 
+        return true; 
+      } catch(e){ 
+        console.warn('Error al usar navigator.clipboard.writeText:', e); 
+      }
+    }
+    // Si falla o no está disponible, usa la función de respaldo
+    return await fallbackCopyText(text);
+  }
+
+  // Itera sobre todos los botones para añadir el event listener
+  botones.forEach(boton=>{
+    boton.addEventListener('click', async function(e){
+      e.preventDefault(); // Previene la acción por defecto del botón
+      // Encuentra el ancestro más cercano que sea un 'article' (o '.iDevice_wrapper')
+      const articleWrapper = boton.closest('article.iDevice_wrapper');
+      if (!articleWrapper) {
+          console.error("No se encontró el contenedor 'article.iDevice_wrapper' para el botón.");
+          return;
+      }
+      // Busca el elemento con la clase .textoACopiar dentro de ese contenedor 'article'
+      const textoElem = articleWrapper.querySelector('.textoACopiar');
+      const texto = (textoElem?.innerText || textoElem?.textContent || '').trim(); // Obtiene el texto y lo limpia
+      
+      if(!texto) {
+        console.warn('No hay texto para copiar en este bloque.');
+        return;
+      }
+      
+      const ok = await copyTextToClipboard(texto); // Intenta copiar el texto
+      if(ok) showToast(); // Si se copió con éxito, muestra el toast
+    });
+  });
+});
+</script></head>
+<body class="exe-web-site" id="exe-node-17"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">CEFIRE IA i Pensament Computacional</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">CEFIRE IA i Pensament Computacional</a></li>
+   <li><a href="sessi_teams.html" class="no-ch">Sessió Teams</a></li>
+   <li><a href="dietes_gva.html" class="no-ch">Dietes GVA</a></li>
+   <li class="current-page-parent"><a href="acci_formativa.html" class="current-page-parent daddy">Acció Formativa</a>
+   <ul>
+      <li><a href="introducci.html" class="no-ch">Introducció</a></li>
+      <li><a href="festius.html" class="no-ch">Festius</a></li>
+      <li class="current-page-parent"><a href="procs_de_vida_duna_acci_formativa.html" class="current-page-parent daddy">Procés de vida d'una acció formativa</a>
+      <ul>
+         <li><a href="estat_pendent.html" class="daddy">Estat Pendent</a>
+         <ul class="other-section">
+            <li><a href="perfil_gesform.html" class="daddy">Perfil Gesform</a>
+            <ul class="other-section">
+               <li><a href="fse_fons_social_europeu.html" class="no-ch">FSE (Fons Social Europeu)</a></li>
+               <li><a href="paa_pla_anual_dactivitats.html" class="no-ch">PAA (Pla Anual d'Activitats)</a></li>
+               <li><a href="bners.html" class="no-ch">Bàners</a></li>
+            </ul>
+            </li>
+            <li><a href="pressupost.html" class="no-ch">Pressupost</a></li>
+            <li><a href="reviseu.html" class="no-ch">Reviseu</a></li>
+         </ul>
+         </li>
+         <li><a href="estat_proposta_validaci_e_inscripci.html" class="no-ch">Estat Proposta, Validació e Inscripció</a></li>
+         <li><a href="estat_confirmaci.html" class="no-ch">Estat Confirmació</a></li>
+         <li><a href="publicaci_llistat_definitiu.html" class="no-ch">Publicació Llistat Definitiu</a></li>
+         <li><a href="sincronitzaci_de_participants.html" class="no-ch">Sincronització de Participants</a></li>
+         <li id="active"><a href="gesti_baixes_i_altes.html" class="active no-ch">Gestió Baixes i Altes</a></li>
+         <li><a href="durant_la_formaci.html" class="no-ch">Durant la Formació</a></li>
+         <li><a href="enquesta_davaluaci.html" class="no-ch">Enquesta d'Avaluació</a></li>
+         <li><a href="estat_avaluaci.html" class="no-ch">Estat Avaluació</a></li>
+         <li><a href="estat_certificaci.html" class="no-ch">Estat Certificació</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="gesti_econmica.html" class="daddy">Gestió Econòmica</a>
+   <ul class="other-section">
+      <li><a href="protocolo_minutas.html" class="no-ch">Protocolo Minutas</a></li>
+      <li><a href="protocolo_facturas.html" class="no-ch">Protocolo Facturas</a></li>
+      <li><a href="protocolo_finalizacin_formaciones.html" class="no-ch">Protocolo Finalización Formaciones</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="sincronitzaci_de_participants.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="durant_la_formaci.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Gestió Baixes i Altes</h1></header>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id53">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Gestió de Baixa Participant</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta53_131_2" class="block iDevice_content">
+<div class="exe-text"><p>Una vegada <strong>publicat el llistat definitiu</strong> pot haver alguna petició de baixa. <span style="color: #ff0000;">Caldrà gestionar la baixa i la posterior alta d’un participant en llista d’espera.</span></p>
+<p>Entrar al curs en Gesform a <strong>Gestión Solicitud de Participantes</strong></p>
+<p style="text-align: center;"><img src="image46.png" alt="" width="502" height="219" /></p>
+<p>Buscar la persona que vol donar-se de baixa. En la columna <strong>Desc. Estado</strong> fem doble clic a la paraula <strong>Confirmado</strong>, s’obrirà una finestra per canviaer l’estat a <strong>Renuncia</strong> i acceptem.</p>
+<p style="text-align: center;"><img src="image47.png" alt="" width="430" height="111" /></p>
+<p style="text-align: center;"><img src="image48.png" alt="" width="536" height="424" /></p>
+<p style="text-align: center;"><img src="image49.png" alt="" width="650" height="328" /></p>
+<p></p>
+<p>Donem a <strong>Aplicar </strong>i acceptem la finestra emergent que ix. I <strong>Aceptar</strong> i acceptem la finestra emergent que ix.</p>
+<p style="text-align: center;"> <img src="image50.png" alt="" width="286" height="161" /></p>
+<p>Posteriorment cal entrar a <strong>Participantes Edición</strong>.</p>
+<p style="text-align: center;"> <img src="image51.png" alt="" width="347" height="147" /></p>
+<p>Busquem al participant i donem doble clic a la icona de la personeta.</p>
+<p style="text-align: center;"> <img src="image52.png" alt="" width="571" height="221" /></p>
+<p>S’obrirà una finestra emergent en la que tindrem que <strong>canviar l’estat a Baja, Calificación No apto i obrim el desplegable per indicar el motiu</strong>. <br /> </p>
+<p style="text-align: center;"><img src="image53.png" alt="" width="807" height="636" /></p>
+<p> Busquem com a motiu <strong>Renuncia</strong> i <strong>apliquem aceptem</strong> i per que aparega al requadre caldrà clicar al quadrat que hi ha a la part de sota dels dos quadrats.</p>
+<p style="text-align: center;"> <img src="image44.png" alt="" width="806" height="441" /></p>
+<p style="text-align: center;"><img src="image45.png" alt="" width="800" height="618" /></p>
+<p><strong>Apliquem</strong> i <strong>aceptem</strong> i una vegada <strong>refresquem</strong> ja tindrem la persona de baixa.</p>
+<p style="text-align: center;"><img src="image82.png" alt="" width="860" height="123" /></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id54">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Gestió d'Alta Participant</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta54_132_2" class="block iDevice_content">
+<div class="exe-text"><p>Una vegada tenim al participant de baixa caldrà anar a <strong>Gestió Solicitud de Participantes</strong> per <span style="color: #ff0000;">trucar a la persona que està a continuació en la llista d’espera</span>. </p>
+<p>Una vegada entres <strong>està ordenat</strong> ja per agafar al primer participant que no estiga en verd.</p>
+<p style="text-align: center;"><img src="image83.png" alt="" width="584" height="78" /></p>
+<p>Per accedir a les dades li donem <strong>doble clic al nom</strong> i apareix la seua fitxa. On estan les dades per poder posar-se en contacte. </p>
+<p>Si algú diu que no vol, apuntar el nom per tal de tenir clar que no vol per si es produeix altra baixa.</p>
+<p>Quan et diga algú que si, copiem el DNI de la persona, anem a <strong>Participantes Edición</strong> li donem a <strong>crear nou registre</strong>.</p>
+<p style="text-align: center;"><img src="image85.png" alt="" width="274" height="98" /></p>
+<p> Si dice “<strong>está fuera de plazo</strong>” no pasa res, aceptar. Eixirà una finestra com aquesta en la que cal posar el DNI i donar a intro, posarem <strong>Estado Alta</strong>, <strong>Calificación Apto</strong> i en <strong>Tipo A de assistent</strong>.</p>
+<p style="text-align: center;"><img src="image87.png" alt="" width="556" height="433" /></p>
+<p style="text-align: center;"><img src="image88.png" alt="" width="558" height="439" /></p>
+<p><strong>Refresquem</strong> per vore si està en participants. La icona que apareix al costat de <strong>Alta</strong> serà diferent per que s’ha posat de manera manual.</p>
+<p style="text-align: center;"><img src="image89.png" alt="" width="95" height="43" /></p>
+<p>Una vegada s’ha tramitat la baixa i l’alta <span style="color: #ff0000;"><strong>caldrà Sincronitzar a Aules altra volta</strong></span>.</p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-nc-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Reconocimiento No comercial Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="sincronitzaci_de_participants.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="durant_la_formaci.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>

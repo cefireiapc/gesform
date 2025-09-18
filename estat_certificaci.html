@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Estat Certificació | CEFIRE IA i Pensament Computacional </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Moisés Moreno Rando" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Script para copiar el contenido de #textoACopiar al portapapeles (sin alert) -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // Selecciona todos los botones de copiar
+  const botones = document.querySelectorAll('.botonCopiar');
+  const toast = document.createElement('div');
+  
+  // Crear un toast simple para notificaciones
+  toast.textContent = 'Texto copiado ✅';
+  toast.style.cssText = `
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: #111;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all .22s;
+    z-index: 9999;
+    font-size: 0.95rem;
+    pointer-events: none;
+  `;
+  document.body.appendChild(toast);
+
+  // Función para mostrar el toast
+  function showToast(){
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(()=>{
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(8px)';
+    }, 1800);
+  }
+
+  // Función de respaldo para copiar texto usando textarea (para navegadores antiguos o restricciones de iframe)
+  async function fallbackCopyText(text){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px'; // Mueve el textarea fuera de la pantalla
+    document.body.appendChild(ta);
+    ta.select(); // Selecciona el texto en el textarea
+    try { 
+      document.execCommand('copy'); // Intenta copiar
+      document.body.removeChild(ta); // Elimina el textarea
+      return true; 
+    } catch(e){ 
+      document.body.removeChild(ta); 
+      console.error(e); 
+      return false; 
+    }
+  }
+
+  // Función principal para copiar texto al portapapeles
+  async function copyTextToClipboard(text){
+    // Intenta usar la API Clipboard de forma asíncrona
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      try{ 
+        await navigator.clipboard.writeText(text); 
+        return true; 
+      } catch(e){ 
+        console.warn('Error al usar navigator.clipboard.writeText:', e); 
+      }
+    }
+    // Si falla o no está disponible, usa la función de respaldo
+    return await fallbackCopyText(text);
+  }
+
+  // Itera sobre todos los botones para añadir el event listener
+  botones.forEach(boton=>{
+    boton.addEventListener('click', async function(e){
+      e.preventDefault(); // Previene la acción por defecto del botón
+      // Encuentra el ancestro más cercano que sea un 'article' (o '.iDevice_wrapper')
+      const articleWrapper = boton.closest('article.iDevice_wrapper');
+      if (!articleWrapper) {
+          console.error("No se encontró el contenedor 'article.iDevice_wrapper' para el botón.");
+          return;
+      }
+      // Busca el elemento con la clase .textoACopiar dentro de ese contenedor 'article'
+      const textoElem = articleWrapper.querySelector('.textoACopiar');
+      const texto = (textoElem?.innerText || textoElem?.textContent || '').trim(); // Obtiene el texto y lo limpia
+      
+      if(!texto) {
+        console.warn('No hay texto para copiar en este bloque.');
+        return;
+      }
+      
+      const ok = await copyTextToClipboard(texto); // Intenta copiar el texto
+      if(ok) showToast(); // Si se copió con éxito, muestra el toast
+    });
+  });
+});
+</script></head>
+<body class="exe-web-site" id="exe-node-20"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">CEFIRE IA i Pensament Computacional</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">CEFIRE IA i Pensament Computacional</a></li>
+   <li><a href="sessi_teams.html" class="no-ch">Sessió Teams</a></li>
+   <li><a href="dietes_gva.html" class="no-ch">Dietes GVA</a></li>
+   <li class="current-page-parent"><a href="acci_formativa.html" class="current-page-parent daddy">Acció Formativa</a>
+   <ul>
+      <li><a href="introducci.html" class="no-ch">Introducció</a></li>
+      <li><a href="festius.html" class="no-ch">Festius</a></li>
+      <li class="current-page-parent"><a href="procs_de_vida_duna_acci_formativa.html" class="current-page-parent daddy">Procés de vida d'una acció formativa</a>
+      <ul>
+         <li><a href="estat_pendent.html" class="daddy">Estat Pendent</a>
+         <ul class="other-section">
+            <li><a href="perfil_gesform.html" class="daddy">Perfil Gesform</a>
+            <ul class="other-section">
+               <li><a href="fse_fons_social_europeu.html" class="no-ch">FSE (Fons Social Europeu)</a></li>
+               <li><a href="paa_pla_anual_dactivitats.html" class="no-ch">PAA (Pla Anual d'Activitats)</a></li>
+               <li><a href="bners.html" class="no-ch">Bàners</a></li>
+            </ul>
+            </li>
+            <li><a href="pressupost.html" class="no-ch">Pressupost</a></li>
+            <li><a href="reviseu.html" class="no-ch">Reviseu</a></li>
+         </ul>
+         </li>
+         <li><a href="estat_proposta_validaci_e_inscripci.html" class="no-ch">Estat Proposta, Validació e Inscripció</a></li>
+         <li><a href="estat_confirmaci.html" class="no-ch">Estat Confirmació</a></li>
+         <li><a href="publicaci_llistat_definitiu.html" class="no-ch">Publicació Llistat Definitiu</a></li>
+         <li><a href="sincronitzaci_de_participants.html" class="no-ch">Sincronització de Participants</a></li>
+         <li><a href="gesti_baixes_i_altes.html" class="no-ch">Gestió Baixes i Altes</a></li>
+         <li><a href="durant_la_formaci.html" class="no-ch">Durant la Formació</a></li>
+         <li><a href="enquesta_davaluaci.html" class="no-ch">Enquesta d'Avaluació</a></li>
+         <li><a href="estat_avaluaci.html" class="no-ch">Estat Avaluació</a></li>
+         <li id="active"><a href="estat_certificaci.html" class="active no-ch">Estat Certificació</a></li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li><a href="gesti_econmica.html" class="daddy">Gestió Econòmica</a>
+   <ul class="other-section">
+      <li><a href="protocolo_minutas.html" class="no-ch">Protocolo Minutas</a></li>
+      <li><a href="protocolo_facturas.html" class="no-ch">Protocolo Facturas</a></li>
+      <li><a href="protocolo_finalizacin_formaciones.html" class="no-ch">Protocolo Finalización Formaciones</a></li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="estat_avaluaci.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="gesti_econmica.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Estat Certificació</h1></header>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id63">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Passar a Certificació</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta63_134_2" class="block iDevice_content">
+<div class="exe-text"><p>Una vegada tenim als participants amb la seua qualificació caldrà passar el curs a <strong>Certificació</strong>, generar els certificats i l’acta i enviar a signar els certificats (per part del Director del CEFIRE corresponent o Coordinador/a de l'acció formativa i Acta).</p>
+<p>Ara, <strong>caldrà passar el curs a certificació</strong> (anteriorment estaria en avaluació). Per passar a certificació cal anar a eines <strong>Estados y Cert. / Pasar a estado de certificación </strong></p>
+<p style="text-align: center;"><strong><img src="image72.png" alt="" width="413" height="414" /></strong></p>
+<p style="text-align: left;">Una vegada està en certificació caldrà generar els certificats. Anem a eines a <strong>Estados i Cert / Generar certificados</strong>.</p>
+<p style="text-align: center;"><img src="image73.png" alt="" width="526" height="442" /></p>
+<p style="text-align: left;">Apareixerà una pestanya que cal <strong>acceptar</strong>.</p>
+<p style="text-align: center;"><img src="image74.png" alt="" width="274" height="95" /></p>
+<p style="text-align: left;">En la següent pantalla revisar que els participants, assistents, ponents o professors i coordinadors tinguin un només, si tenen més d’un cal assegurar-se que no estan marcats en aquests casos <strong>certificado no impreso</strong>.</p>
+<p style="text-align: center;"><img src="image75.png" alt="" width="457" height="282" /></p>
+<p style="text-align: left;">Si es una formació massiva caldrà seleccionar els que es certificaran. Si no és massiva marquem a <strong>Selecciona todos</strong>.</p>
+<p style="text-align: center;"><img src="image76.png" alt="" width="488" height="415" /></p>
+<p style="text-align: left;">Caldrà indicar quants volem com a <span style="color: #ff0000;">màxim 1500</span>. Podem continuar fins a finalitzar els que volem certificar.</p>
+<p style="text-align: left;">Una vegada acceptat i generat els certificats, cal enviar-los a signatura. Cal anar a eines a <strong>Lista Certificados Edición</strong></p>
+<p style="text-align: center;"><strong><img src="image77.png" alt="" width="376" height="473" /></strong></p>
+<p style="text-align: left;">Ens apareixerà una llista amb tots els certificats. Indicacions a <span style="color: #ff0000;">tindre en compte</span>:</p>
+<p style="text-align: center;"><img src="image69.png" alt="" width="301" height="270" />          <img src="image92.png" alt="" width="522" height="267" /></p>
+<p>En modelo certificado cal que estigue o certificat amb hores per ponents o certificat general per assistents.</p>
+<p> Per tal de generar els certificats filtrem per A (Correcte) per filtrar triem una casella on estigui la A, i anem a la part superior i donem a filtrar.</p>
+<p style="text-align: center;"><img src="image70.png" alt="" width="539" height="220" /></p>
+<p style="text-align: left;">A continuació seleccionem tots (per seleccionar, cal amb la tecla maj polsada clicar al primer i a l’últim registre), si estan seleccionats es posaran en blau.</p>
+<p style="text-align: left;"><br />Anem a la eina i triem <strong>Validar y enviar a la firma</strong></p>
+<p style="text-align: left;"><strong><img src="image110.png" alt="" width="451" height="312" style="display: block; margin-left: auto; margin-right: auto;" /></strong></p>
+<p>S’obrirà una finestra on està un exemple del certificat generat. <span style="color: #ff0000;">Cal comprovar</span>:</p>
+<ul>
+<li>En <strong>certificat d’assistent</strong>: que estiguin bé els crèdits i les hores.</li>
+<li>En <strong>certificat de ponent</strong>: que hi hagi el nom de la ponència.<br /> </li>
+</ul>
+<p>Si tot ok li donem a <strong>Validar certificado</strong>.</p>
+<p style="text-align: center;"><img src="image113.png" alt="" width="458" height="150" /></p>
+<p style="text-align: left;">Una vegada validats els certificats comprovar que s’han pujat a signatura de manera correcta. Cal actualitzar i comprovar que ha passat de R a B i posteriorment a F. </p>
+<p style="text-align: left;"><strong></strong></p>
+<p style="text-align: left;"></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-nc-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Reconocimiento No comercial Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="estat_avaluaci.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="gesti_econmica.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>
