@@ -1,22 +1,17 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es" id="exe-index">
 <head>
-<link rel="stylesheet" type="text/css" href="base.css" />
-<link rel="stylesheet" type="text/css" href="content.css" />
-<link rel="stylesheet" type="text/css" href="nav.css" />
-<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
-<title>CEFIRE IA i Pensament Computacional </title>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<meta name="author" content="Moisés Moreno Rando" />
-<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
-<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
-<meta name="description" content="Manual y documentación del CEFIRE" />
-<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
-<script type="text/javascript" src="exe_jquery.js"></script>
-<script type="text/javascript" src="common_i18n.js"></script>
-<script type="text/javascript" src="common.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Script para copiar el contenido de #textoACopiar al portapapeles (sin alert) -->
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<title>CEFIRE IA i Pensament Computacional</title>
+<link rel="icon" type="image/x-icon" href="libs/favicon.ico">
+<meta name="description" content="Manual y documentación del CEFIRE">
+<script>document.querySelector("html").classList.add("js");</script><script src="libs/jquery/jquery.min.js"> </script><script src="libs/common_i18n.js"> </script><script src="libs/common.js"> </script><script src="libs/exe_export.js"> </script><script src="libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css">
+<script src="idevices/text/text.js"></script><link rel="stylesheet" href="idevices/text/text.css">
+<link rel="stylesheet" href="content/css/base.css"><script src="theme/style.js"> </script><link rel="stylesheet" href="theme/style.css">
+<!-- Script para copiar el contenido de #textoACopiar al portapapeles (sin alert) -->
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   // Selecciona todos los botones de copiar
@@ -41,18 +36,16 @@ document.addEventListener('DOMContentLoaded', function(){
     pointer-events: none;
   `;
   document.body.appendChild(toast);
-
   // Función para mostrar el toast
   function showToast(){
     toast.style.opacity = '1';
     toast.style.transform = 'translateY(0)';
     clearTimeout(toast._t);
     toast._t = setTimeout(()=>{
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(8px)';
+ toast.style.opacity = '0';
+ toast.style.transform = 'translateY(8px)';
     }, 1800);
   }
-
   // Función de respaldo para copiar texto usando textarea (para navegadores antiguos o restricciones de iframe)
   async function fallbackCopyText(text){
     const ta = document.createElement('textarea');
@@ -62,178 +55,355 @@ document.addEventListener('DOMContentLoaded', function(){
     document.body.appendChild(ta);
     ta.select(); // Selecciona el texto en el textarea
     try { 
-      document.execCommand('copy'); // Intenta copiar
-      document.body.removeChild(ta); // Elimina el textarea
-      return true; 
+ document.execCommand('copy'); // Intenta copiar
+ document.body.removeChild(ta); // Elimina el textarea
+ return true; 
     } catch(e){ 
-      document.body.removeChild(ta); 
-      console.error(e); 
-      return false; 
+ document.body.removeChild(ta); 
+ console.error(e); 
+ return false; 
     }
   }
-
   // Función principal para copiar texto al portapapeles
   async function copyTextToClipboard(text){
     // Intenta usar la API Clipboard de forma asíncrona
     if(navigator.clipboard && navigator.clipboard.writeText){
-      try{ 
-        await navigator.clipboard.writeText(text); 
-        return true; 
-      } catch(e){ 
-        console.warn('Error al usar navigator.clipboard.writeText:', e); 
-      }
+ try{ 
+   await navigator.clipboard.writeText(text); 
+   return true; 
+ } catch(e){ 
+   console.warn('Error al usar navigator.clipboard.writeText:', e); 
+ }
     }
     // Si falla o no está disponible, usa la función de respaldo
     return await fallbackCopyText(text);
   }
-
   // Itera sobre todos los botones para añadir el event listener
   botones.forEach(boton=>{
     boton.addEventListener('click', async function(e){
-      e.preventDefault(); // Previene la acción por defecto del botón
-      // Encuentra el ancestro más cercano que sea un 'article' (o '.iDevice_wrapper')
-      const articleWrapper = boton.closest('article.iDevice_wrapper');
-      if (!articleWrapper) {
-          console.error("No se encontró el contenedor 'article.iDevice_wrapper' para el botón.");
-          return;
-      }
-      // Busca el elemento con la clase .textoACopiar dentro de ese contenedor 'article'
-      const textoElem = articleWrapper.querySelector('.textoACopiar');
-      const texto = (textoElem?.innerText || textoElem?.textContent || '').trim(); // Obtiene el texto y lo limpia
-      
-      if(!texto) {
-        console.warn('No hay texto para copiar en este bloque.');
-        return;
-      }
-      
-      const ok = await copyTextToClipboard(texto); // Intenta copiar el texto
-      if(ok) showToast(); // Si se copió con éxito, muestra el toast
+ e.preventDefault(); // Previene la acción por defecto del botón
+ // Encuentra el ancestro más cercano que sea un 'article' (o '.iDevice_wrapper')
+ const articleWrapper = boton.closest('article.iDevice_wrapper');
+ if (!articleWrapper) {
+console.error("No se encontró el contenedor 'article.iDevice_wrapper' para el botón.");
+return;
+ }
+ // Busca el elemento con la clase .textoACopiar dentro de ese contenedor 'article'
+ const textoElem = articleWrapper.querySelector('.textoACopiar');
+ const texto = (textoElem?.innerText || textoElem?.textContent || '').trim(); // Obtiene el texto y lo limpia
+ 
+ if(!texto) {
+   console.warn('No hay texto para copiar en este bloque.');
+   return;
+ }
+ 
+ const ok = await copyTextToClipboard(texto); // Intenta copiar el texto
+ if(ok) showToast(); // Si se copió con éxito, muestra el toast
     });
   });
 });
-</script></head>
-<body class="exe-web-site" id="exe-node-0"><script type="text/javascript">document.body.className+=" js"</script>
-<div id="content">
-<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
-<header id="header" ><div id="headerContent">CEFIRE IA i Pensament Computacional</div></header>
-<nav id="siteNav">
+</script>
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mq0ty3kz-2pm1qq0ts" id="skipNav">Skip to content</a> <nav id="siteNav">
 <ul>
-   <li id="active"><a href="index.html" class="active daddy main-node">CEFIRE IA i Pensament Computacional</a></li>
-   <li><a href="sessi_teams.html" class="no-ch">Sessió Teams</a></li>
-   <li><a href="dietes_gva.html" class="no-ch">Dietes GVA</a></li>
-   <li><a href="acci_formativa.html" class="daddy">Acció Formativa</a>
-   <ul class="other-section">
-      <li><a href="introducci.html" class="no-ch">Introducció</a></li>
-      <li><a href="festius.html" class="no-ch">Festius</a></li>
-      <li><a href="procs_de_vida_duna_acci_formativa.html" class="daddy">Procés de vida d'una acció formativa</a>
-      <ul class="other-section">
-         <li><a href="estat_pendent.html" class="daddy">Estat Pendent</a>
-         <ul class="other-section">
-            <li><a href="perfil_gesform.html" class="daddy">Perfil Gesform</a>
-            <ul class="other-section">
-               <li><a href="fse_fons_social_europeu.html" class="no-ch">FSE (Fons Social Europeu)</a></li>
-               <li><a href="paa_pla_anual_dactivitats.html" class="no-ch">PAA (Pla Anual d'Activitats)</a></li>
-               <li><a href="bners.html" class="no-ch">Bàners</a></li>
-            </ul>
-            </li>
-            <li><a href="pressupost.html" class="no-ch">Pressupost</a></li>
-            <li><a href="reviseu.html" class="no-ch">Reviseu</a></li>
-         </ul>
-         </li>
-         <li><a href="estat_proposta_validaci_e_inscripci.html" class="no-ch">Estat Proposta, Validació e Inscripció</a></li>
-         <li><a href="estat_confirmaci.html" class="no-ch">Estat Confirmació</a></li>
-         <li><a href="publicaci_llistat_definitiu.html" class="no-ch">Publicació Llistat Definitiu</a></li>
-         <li><a href="sincronitzaci_de_participants.html" class="no-ch">Sincronització de Participants</a></li>
-         <li><a href="gesti_baixes_i_altes.html" class="no-ch">Gestió Baixes i Altes</a></li>
-         <li><a href="durant_la_formaci.html" class="no-ch">Durant la Formació</a></li>
-         <li><a href="enquesta_davaluaci.html" class="no-ch">Enquesta d'Avaluació</a></li>
-         <li><a href="estat_avaluaci.html" class="no-ch">Estat Avaluació</a></li>
-         <li><a href="estat_certificaci.html" class="no-ch">Estat Certificació</a></li>
-      </ul>
-      </li>
-   </ul>
-   </li>
-   <li><a href="gesti_econmica.html" class="daddy">Gestió Econòmica</a>
-   <ul class="other-section">
-      <li><a href="protocolo_minutas.html" class="no-ch">Protocolo Minutas</a></li>
-      <li><a href="protocolo_facturas.html" class="no-ch">Protocolo Facturas</a></li>
-      <li><a href="protocolo_finalizacin_formaciones.html" class="no-ch">Protocolo Finalización Formaciones</a></li>
-   </ul>
-   </li>
+<li class="active"> <a href="index.html" class="active main-node no-ch">CEFIRE IA i Pensament Computacional</a>
+</li>
+<li> <a href="html/sessio-teams.html" class="no-ch">Sessió Teams</a>
+</li>
+<li> <a href="html/dietes-gva.html" class="no-ch">Dietes GVA</a>
+</li>
+<li> <a href="html/accio-formativa.html" class="daddy">Acció Formativa</a>
+<ul class="other-section">
+<li> <a href="html/introduccio.html" class="no-ch">Introducció</a>
+</li>
+<li> <a href="html/festius.html" class="no-ch">Festius</a>
+</li>
+<li> <a href="html/proces-de-vida-duna-accio-formativa.html" class="daddy">Procés de vida d&#039;una acció formativa</a>
+<ul class="other-section">
+<li> <a href="html/estat-pendent.html" class="daddy">Estat Pendent</a>
+<ul class="other-section">
+<li> <a href="html/perfil-gesform.html" class="daddy">Perfil Gesform</a>
+<ul class="other-section">
+<li> <a href="html/fse-fons-social-europeu.html" class="no-ch">FSE (Fons Social Europeu)</a>
+</li>
+<li> <a href="html/paa-pla-anual-dactivitats.html" class="no-ch">PAA (Pla Anual d&#039;Activitats)</a>
+</li>
+<li> <a href="html/baners.html" class="no-ch">Bàners</a>
+</li>
 </ul>
-</nav>
-<div id='topPagination'>
-<nav class="pagination noprt">
-<a href="sessi_teams.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
-</nav>
-</div>
-<div id="main-wrapper">
-<section id="main">
-<header id="nodeDecoration"><h1 id="nodeTitle">CEFIRE IA i Pensament Computacional</h1></header>
-<article class="iDevice_wrapper textIdevice" id="id42">
-<div class="iDevice emphasis0" >
-<div id="ta42_128_2" class="block iDevice_content">
-<div class="exe-text"><p><strong>ORDEN 65/2012</strong>, de 26 de octubre, de la Conselleria de Educación, Formación y Empleo, que establece el modelo de formación permanente del profesorado y el diseño, reconocimiento y registro de las actividades formativas.</p>
-<p><a href="https://dogv.gva.es/es/resultat-dogv?signatura=2012/10009&amp;term=orden%2065/2012">https://dogv.gva.es/es/resultat-dogv?signatura=2012/10009&amp;term=orden%2065/2012</a></p>
+</li>
+<li> <a href="html/pressupost.html" class="no-ch">Pressupost</a>
+</li>
+<li> <a href="html/reviseu.html" class="no-ch">Reviseu</a>
+</li>
+</ul>
+</li>
+<li> <a href="html/estat-proposta-validacio-e-inscripcio.html" class="no-ch">Estat Proposta, Validació e Inscripció</a>
+</li>
+<li> <a href="html/estat-confirmacio.html" class="no-ch">Estat Confirmació</a>
+</li>
+<li> <a href="html/publicacio-llistat-definitiu.html" class="no-ch">Publicació Llistat Definitiu</a>
+</li>
+<li> <a href="html/sincronitzacio-de-participants.html" class="no-ch">Sincronització de Participants</a>
+</li>
+<li> <a href="html/gestio-baixes-i-altes.html" class="no-ch">Gestió Baixes i Altes</a>
+</li>
+<li> <a href="html/durant-la-formacio.html" class="no-ch">Durant la Formació</a>
+</li>
+<li> <a href="html/enquesta-davaluacio.html" class="no-ch">Enquesta d&#039;Avaluació</a>
+</li>
+<li> <a href="html/estat-avaluacio.html" class="no-ch">Estat Avaluació</a>
+</li>
+<li> <a href="html/estat-certificacio.html" class="no-ch">Estat Certificació</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li> <a href="html/gestio-economica.html" class="daddy">Gestió Econòmica</a>
+<ul class="other-section">
+<li> <a href="html/protocolo-minutas.html" class="no-ch">Protocolo Minutas</a>
+</li>
+<li> <a href="html/protocolo-facturas.html" class="no-ch">Protocolo Facturas</a>
+</li>
+<li> <a href="html/protocolo-finalizacion-formaciones.html" class="no-ch">Protocolo Finalización Formaciones</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav><main id="page-mq0ty3kz-2pm1qq0ts" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">CEFIRE IA i Pensament Computacional</p></div>
+<div class="page-header"><h1 class="page-title">CEFIRE IA i Pensament Computacional</h1></div>
+</header><div id="page-content-page-mq0ty3kz-2pm1qq0ts" class="page-content">
+<article id="block-mq0s5xgp-kxyl3lk65" class="box no-header">
+<header class="box-head no-icon">
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-mq0s5xgp-5h8qzr2x8" class="idevice_node text" data-idevice-path="idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-mq0s5xgp-5h8qzr2x8&quot;}">
+<p><strong>ORDEN 65/2012</strong>, de 26 de octubre, de la Conselleria de Educación, Formación y Empleo, que establece el modelo de formación permanente del profesorado y el diseño, reconocimiento y registro de las actividades formativas.</p>
+<p><a href="https://dogv.gva.es/es/resultat-dogv?signatura=2012/10009&term=orden%2065/2012">https://dogv.gva.es/es/resultat-dogv?signatura=2012/10009&term=orden%2065/2012</a></p>
 <hr />
 <p><strong>ORDEN 64/2012</strong>, de 26 de octubre, de la Conselleria de Educación, Formación y Empleo, por la que se desarrolla el Decreto 231/1997, de 2 de septiembre, por el que se regula la creación, estructura y funcionamiento de los Centros de Formación, Innovación y Recursos Educativos de la Comunitat Valenciana.</p>
-<p><a href="https://dogv.gva.es/es/resultat-dogv?L=1&amp;sig=009913%2F2012&amp;url_lista=">https://dogv.gva.es/es/resultat-dogv?L=1&amp;sig=009913%2F2012&amp;url_lista=</a></p>
+<p><a href="https://dogv.gva.es/es/resultat-dogv?L=1&sig=009913%2F2012&url_lista=">https://dogv.gva.es/es/resultat-dogv?L=1&sig=009913%2F2012&url_lista=</a></p>
 <hr />
 <p><strong>RESOLUCIÓN de 15 de julio de 2025</strong>, de la Secretaría Autonómica de Educación, por la que se regula el Programa anual de formación permanente de centro, se convoca la solicitud de las modalidades formativas (proyectos de formación en centros, seminarios y grupos de trabajo) para desarrollarlas durante el curso 2025-2026 y se establece la dotación de recursos económicos para los centros docentes públicos de titularidad de la Generalitat. [2025/10155]</p>
-<p><a href="https://ceice.gva.es/es/web/formacion-profesorado/proyectos-de-formacion-en-centros" target="_blank" rel="noopener">https://ceice.gva.es/es/web/formacion-profesorado/proyectos-de-formacion-en-centros</a></p></div>
+<p><a href="https://ceice.gva.es/es/web/formacion-profesorado/proyectos-de-formacion-en-centros" target="_blank" rel="noopener">https://ceice.gva.es/es/web/formacion-profesorado/proyectos-de-formacion-en-centros</a></p>
 </div>
 </div>
-</article>
-<article class="iDevice_wrapper textIdevice em_iDevice" id="id90">
-<div class="iDevice emphasis1" >
-<div class="iDevice_inner">
-<div class="iDevice_content_wrapper">
-<div id="ta90_130_2" class="block iDevice_content">
-<div class="exe-text"><style>
+</article><article id="block-mq0s5xgp-ks4od2c8u" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Membres</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-mq0s5xgp-roubslaor" class="idevice_node text" data-idevice-path="idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-mq0s5xgp-roubslaor&quot;}">
+<style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
+ font-family: Arial, sans-serif;
+ margin: 20px;
     }
     table.uniform {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 30px 0;
-      font-size: 14px;
+ width: 100%;
+ border-collapse: collapse;
+ margin: 30px 0;
+ font-size: 14px;
     }
     table.uniform th,
     table.uniform td {
-      border: 1px solid #333;
-      padding: 8px;
-      text-align: center;
-      vertical-align: middle;
+ border: 1px solid #333;
+ padding: 8px;
+ text-align: center;
+ vertical-align: middle;
     }
     table.uniform th {
-      background-color: #f2f2f2;
-      font-weight: bold;
+ background-color: #f2f2f2;
+ font-weight: bold;
     }
     table.uniform caption {
-      caption-side: top;
-      font-size: 16px;
-      font-weight: bold;
-      margin: 10px;
-      text-align: center;
+ caption-side: top;
+ font-size: 16px;
+ font-weight: bold;
+ margin: 10px;
+ text-align: center;
     }
   </style>
-</div>
-</div>
-</div>
+<table class="uniform"><caption>DIRECCIÓ</caption>
+<thead>
+<tr>
+<th style="width: 288.6px;">Nom</th>
+<th style="width: 148.317px;">DNI Gesform</th>
+<th style="width: 122.267px;">DNI</th>
+<th style="width: 181.4px;">Telèfon</th>
+<th style="width: 297.617px;">Correu</th>
+<th style="width: 388.8px;">Destí</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width: 288.6px;"><span style="font-size: 10pt;">MIGUEL ÁNGEL LAFUENTE ALONSO</span></td>
+<td style="width: 148.317px;"><span style="font-size: 10pt;">053355028</span></td>
+<td style="width: 122.267px;"><span style="font-size: 10pt;">53355028L</span></td>
+<td style="width: 181.4px;"><span style="font-size: 10pt;">626 22 22 38</span></td>
+<td style="width: 297.617px;"><span style="font-size: 10pt;">ma.lafuentealonso@edu.gva.es</span></td>
+<td style="width: 388.8px;"><span style="font-size: 8pt;">IES LA MARXADELLA (46016397)</span><br /><span style="font-size: 8pt;">MANTENIMENT DE VEHICLES</span></td>
+</tr>
+</tbody>
+</table>
+<table class="uniform"><caption>CEFIRE ALACANT <span style="font-size: 10pt;">(965 918 737)</span></caption>
+<thead>
+<tr>
+<th style="width: 300.2px;">Nom</th>
+<th style="width: 139.1px;">DNI Gesform</th>
+<th style="width: 120.083px;">DNI</th>
+<th style="width: 182.133px;">Telèfon</th>
+<th style="width: 298.217px;">Correu</th>
+<th style="width: 387.267px;">Destí</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width: 300.2px;"><span style="font-size: 10pt;">MOISÉS MORENO RANDO</span></td>
+<td style="width: 139.1px;"><span style="font-size: 10pt;">021512160</span></td>
+<td style="width: 120.083px;"><span style="font-size: 10pt;">21512160F</span></td>
+<td style="width: 182.133px;"><span style="font-size: 10pt;">652 53 87 06</span></td>
+<td style="width: 298.217px;"><span style="font-size: 10pt;">m.morenorando@edu.gva.es</span></td>
+<td style="width: 387.267px;"><span style="font-size: 8pt;">IES MARE NOSTRUM (03012736)</span><br /><span style="font-size: 8pt;">INFORMÀTICA</span></td>
+</tr>
+<tr>
+<td style="width: 300.2px;"><span style="font-size: 10pt;">RICARDO JACOBO NUTZ AYALA</span></td>
+<td style="width: 139.1px;"><span style="font-size: 10pt;">021462716</span></td>
+<td style="width: 120.083px;"><span style="font-size: 10pt;">21462716J</span></td>
+<td style="width: 182.133px;"><span style="font-size: 10pt;">656 55 09 44</span></td>
+<td style="width: 298.217px;"><span style="font-size: 10pt;">rj.nutzayala@edu.gva.es</span></td>
+<td style="width: 387.267px;"><span style="font-size: 8pt;">IES EL MISTERI D'ELX (03014538)</span><br /><span style="font-size: 8pt;">INFORMÀTICA</span></td>
+</tr>
+</tbody>
+</table>
+<table class="uniform" style="height: 220px;"><caption>CEFIRE LA NUCIA <span style="font-size: 10pt;">(965 695 842 També funciona l'extensió 695 842)</span></caption>
+<thead>
+<tr style="height: 22px;">
+<th style="height: 22px; width: 302.633px;">Nom</th>
+<th style="height: 22px; width: 138.3px;">DNI Gesform</th>
+<th style="height: 22px; width: 120.267px;">DNI</th>
+<th style="height: 22px; width: 180.383px;">Telèfon</th>
+<th style="height: 22px; width: 298.617px;">Correu</th>
+<th style="height: 22px; width: 386.8px;">Destí</th>
+</tr>
+</thead>
+<tbody>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 302.633px;"><span style="font-size: 10pt;">JOSE ENRIQUE AVELLA MARTINEZ</span></td>
+<td style="height: 22px; width: 138.3px;"><span style="font-size: 10pt;">053217184</span></td>
+<td style="height: 22px; width: 120.267px;"><span style="font-size: 10pt;">53217184Z</span></td>
+<td style="height: 22px; width: 180.383px;"><span style="font-size: 10pt;">650 94 65 81</span></td>
+<td style="height: 22px; width: 298.617px;"><span style="font-size: 10pt;">je.avellamartinez@edu.gva.es</span></td>
+<td style="height: 22px; width: 386.8px;"><span style="font-size: 8pt;">CEIP LA OLLA (03002615)</span></td>
+</tr>
+<tr style="height: 44px;">
+<td style="height: 44px; width: 302.633px;"><span style="font-size: 10pt;">Mª JOSÉ LOZANO PÉREZ</span></td>
+<td style="height: 44px; width: 138.3px;"><span style="font-size: 10pt;">029020666</span></td>
+<td style="height: 44px; width: 120.267px;"><span style="font-size: 10pt;">29020666W</span></td>
+<td style="height: 44px; width: 180.383px;"><span style="font-size: 10pt;">670 25 46 87</span></td>
+<td style="height: 44px; width: 298.617px;"><span style="font-size: 10pt;">mj.lozanoperez@edu.gva.es</span></td>
+<td style="height: 44px; width: 386.8px;"><span style="font-size: 8pt;">IES LA NUCIA (03015105)</span><br /><span style="font-size: 8pt;">INFORMÀTICA</span></td>
+</tr>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 302.633px;"><span style="font-size: 10pt;">MARÍA LLORCA FINESTRAT</span></td>
+<td style="height: 22px; width: 138.3px;"><span style="font-size: 10pt;">074007892</span></td>
+<td style="height: 22px; width: 120.267px;"><span style="font-size: 10pt;">74007892X</span></td>
+<td style="height: 22px; width: 180.383px;"><span style="font-size: 10pt;">647 07 40 73</span></td>
+<td style="height: 22px; width: 298.617px;"><span style="font-size: 10pt;">m.llorcafinestrat@edu.gva.es</span></td>
+<td style="height: 22px; width: 386.8px;"><span style="font-size: 8pt;">CEIP VICENTE LINO FERRANDIZ, ORXETA (03006876)</span></td>
+</tr>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 302.633px;"><span style="font-size: 10pt;">VERÓNICA MARTÍNEZ RENEO</span></td>
+<td style="height: 22px; width: 138.3px;"><span style="font-size: 10pt;">048331627</span></td>
+<td style="height: 22px; width: 120.267px;"><span style="font-size: 10pt;">48331627W</span></td>
+<td style="height: 22px; width: 180.383px;"><span style="font-size: 10pt;">606 54 52 33</span></td>
+<td style="height: 22px; width: 298.617px;"><span style="font-size: 10pt;">v.martinezreneo@edu.gva.es</span></td>
+<td style="height: 22px; width: 386.8px;"><span style="font-size: 8pt;">IES L'ARABI (03015117)</span></td>
+</tr>
+<tr style="height: 44px;">
+<td style="height: 44px; width: 302.633px;"><span style="font-size: 10pt;">JOSÉ SALVADOR MIRA GREGORI</span></td>
+<td style="height: 44px; width: 138.3px;"><span style="font-size: 10pt;">029019605</span></td>
+<td style="height: 44px; width: 120.267px;"><span style="font-size: 10pt;">29019605E</span></td>
+<td style="height: 44px; width: 180.383px;"><span style="font-size: 10pt;">607 78 10 11</span></td>
+<td style="height: 44px; width: 298.617px;"><span style="font-size: 10pt;">mira_josgre@gva.es</span></td>
+<td style="height: 44px; width: 386.8px;"><span style="font-size: 8pt;">IES MARCOS ZARAGOZA (03008915)</span><br /><span style="font-size: 8pt;">SISTEMES APLICACIONS INFORMÀTIQUES</span></td>
+</tr>
+<tr style="height: 44px;">
+<td style="height: 44px; width: 302.633px;"><span style="font-size: 10pt;">HECTOR PASCUAL ORTIZ</span></td>
+<td style="height: 44px; width: 138.3px;"><span style="font-size: 10pt;">048331351</span></td>
+<td style="height: 44px; width: 120.267px;"><span style="font-size: 10pt;">48331351W</span></td>
+<td style="height: 44px; width: 180.383px;"><span style="font-size: 10pt;">600 21 22 96</span></td>
+<td style="height: 44px; width: 298.617px;"><span style="font-size: 10pt;">h.pascualortiz@edu.gva.es</span></td>
+<td style="height: 44px; width: 386.8px;"><span style="font-size: 8pt;">IES L'ARABI (03015117)</span><br /><span style="font-size: 8pt;">INFORMÀTICA</span></td>
+</tr>
+</tbody>
+</table>
+<table class="uniform"><caption>CEFIRE VALÈNCIA <span style="font-size: 10pt;">(96 120 69 65 )</span></caption>
+<thead>
+<tr>
+<th style="width: 300.617px;">Nom</th>
+<th style="width: 142.317px;">DNI Gesform</th>
+<th style="width: 122.267px;">DNI</th>
+<th style="width: 178.383px;">Telèfon</th>
+<th style="width: 298.617px;">Correu</th>
+<th style="width: 384.8px;">Destí</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width: 300.617px;"><span style="font-size: 10pt;">MARIA DOLORES AHUIR CARDELLS</span></td>
+<td style="width: 142.317px;"><span style="font-size: 10pt;">024339726</span></td>
+<td style="width: 122.267px;"><span style="font-size: 10pt;">24339726E</span></td>
+<td style="width: 178.383px;"><span style="font-size: 10pt;">676 03 03 77</span></td>
+<td style="width: 298.617px;"><span style="font-size: 10pt;">md.ahuircardells@edu.gva.es</span></td>
+<td style="width: 384.8px;"><span style="font-size: 8pt;">IES LA VEREDA (46022543)</span></td>
+</tr>
+<tr>
+<td style="width: 300.617px;"><span style="font-size: 10pt;">FRANCISCO JAVIER BARREDA CENTELLES</span></td>
+<td style="width: 142.317px;"><span style="font-size: 10pt;">019003134</span></td>
+<td style="width: 122.267px;"><span style="font-size: 10pt;">19003134M</span></td>
+<td style="width: 178.383px;"><span style="font-size: 10pt;">639 85 82 19</span></td>
+<td style="width: 298.617px;"><span style="font-size: 10pt;">fj.barredacentelle@edu.gva.es</span></td>
+<td style="width: 384.8px;"><span style="font-size: 8pt;">IES HENRI MATISSE (46022622)</span><br /><span style="font-size: 8pt;">TÈCNIQUES I PROCEDIMENTS d'IMATGE I SO</span></td>
+</tr>
+<tr>
+<td style="width: 300.617px;"><span style="font-size: 10pt;">CLARA ISABEL CASERO ZAMORA</span></td>
+<td style="width: 142.317px;"><span style="font-size: 10pt;">052659222</span></td>
+<td style="width: 122.267px;"><span style="font-size: 10pt;">52659222D</span></td>
+<td style="width: 178.383px;"><span style="font-size: 10pt;">645 34 21 53</span></td>
+<td style="width: 298.617px;"><span style="font-size: 10pt;">ci.casero@edu.gva.es</span></td>
+<td style="width: 384.8px;"><span style="font-size: 8pt;">IES LA VEREDA (46022543)</span><br /><span style="font-size: 8pt;">ESTÈTICA</span></td>
+</tr>
+<tr>
+<td style="width: 300.617px;"><span style="font-size: 10pt;">HERMELANDO FERRANDO RODRIGUEZ</span></td>
+<td style="width: 142.317px;"><span style="font-size: 10pt;">044864707</span></td>
+<td style="width: 122.267px;"><span style="font-size: 10pt;">44864707X</span></td>
+<td style="width: 178.383px;"><span style="font-size: 10pt;">655 25 20 59</span></td>
+<td style="width: 298.617px;"><span style="font-size: 10pt;">h.ferrandorodrigue@edu.gva.es</span></td>
+<td style="width: 384.8px;"><span style="font-size: 8pt;">CEIP SAN CLEMENTE (46007827)</span><br /><span style="font-size: 8pt;">ANGLÉS</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </article>
-<div id="packageLicense" class="cc cc-by-nc-sa">
-<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Reconocimiento No comercial Compartir igual 4.0</a></p>
+</div></main><div class="nav-buttons">
+<span class="nav-button nav-button-left" aria-hidden="true"><span>Anterior</span></span>
+<a href="html/sessio-teams.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
 </div>
-</section>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-nc-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="license">Creative Commons: Reconocimiento - no comercial - compartir igual 4.0</a></p>
 </div>
-<div id='bottomPagination'>
-<nav class="pagination noprt">
-<a href="sessi_teams.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
-</nav>
+</div></footer>
 </div>
-</div>
-<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(nueva ventana)</span></span></a></p>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-page-mq0ty3ln-ofbnf1bgx">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<title>Publicació Llistat Definitiu | CEFIRE IA i Pensament Computacional</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<meta name="description" content="Manual y documentación del CEFIRE">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+<!-- Script para copiar el contenido de #textoACopiar al portapapeles (sin alert) -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // Selecciona todos los botones de copiar
+  const botones = document.querySelectorAll('.botonCopiar');
+  const toast = document.createElement('div');
+  
+  // Crear un toast simple para notificaciones
+  toast.textContent = 'Texto copiado ✅';
+  toast.style.cssText = `
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: #111;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all .22s;
+    z-index: 9999;
+    font-size: 0.95rem;
+    pointer-events: none;
+  `;
+  document.body.appendChild(toast);
+  // Función para mostrar el toast
+  function showToast(){
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(()=>{
+ toast.style.opacity = '0';
+ toast.style.transform = 'translateY(8px)';
+    }, 1800);
+  }
+  // Función de respaldo para copiar texto usando textarea (para navegadores antiguos o restricciones de iframe)
+  async function fallbackCopyText(text){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px'; // Mueve el textarea fuera de la pantalla
+    document.body.appendChild(ta);
+    ta.select(); // Selecciona el texto en el textarea
+    try { 
+ document.execCommand('copy'); // Intenta copiar
+ document.body.removeChild(ta); // Elimina el textarea
+ return true; 
+    } catch(e){ 
+ document.body.removeChild(ta); 
+ console.error(e); 
+ return false; 
+    }
+  }
+  // Función principal para copiar texto al portapapeles
+  async function copyTextToClipboard(text){
+    // Intenta usar la API Clipboard de forma asíncrona
+    if(navigator.clipboard && navigator.clipboard.writeText){
+ try{ 
+   await navigator.clipboard.writeText(text); 
+   return true; 
+ } catch(e){ 
+   console.warn('Error al usar navigator.clipboard.writeText:', e); 
+ }
+    }
+    // Si falla o no está disponible, usa la función de respaldo
+    return await fallbackCopyText(text);
+  }
+  // Itera sobre todos los botones para añadir el event listener
+  botones.forEach(boton=>{
+    boton.addEventListener('click', async function(e){
+ e.preventDefault(); // Previene la acción por defecto del botón
+ // Encuentra el ancestro más cercano que sea un 'article' (o '.iDevice_wrapper')
+ const articleWrapper = boton.closest('article.iDevice_wrapper');
+ if (!articleWrapper) {
+console.error("No se encontró el contenedor 'article.iDevice_wrapper' para el botón.");
+return;
+ }
+ // Busca el elemento con la clase .textoACopiar dentro de ese contenedor 'article'
+ const textoElem = articleWrapper.querySelector('.textoACopiar');
+ const texto = (textoElem?.innerText || textoElem?.textContent || '').trim(); // Obtiene el texto y lo limpia
+ 
+ if(!texto) {
+   console.warn('No hay texto para copiar en este bloque.');
+   return;
+ }
+ 
+ const ok = await copyTextToClipboard(texto); // Intenta copiar el texto
+ if(ok) showToast(); // Si se copió con éxito, muestra el toast
+    });
+  });
+});
+</script>
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mq0ty3ln-ofbnf1bgx" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">CEFIRE IA i Pensament Computacional</a>
+</li>
+<li> <a href="../html/sessio-teams.html" class="no-ch">Sessió Teams</a>
+</li>
+<li> <a href="../html/dietes-gva.html" class="no-ch">Dietes GVA</a>
+</li>
+<li class="current-page-parent"> <a href="../html/accio-formativa.html" class="daddy">Acció Formativa</a>
+<ul class="other-section">
+<li> <a href="../html/introduccio.html" class="no-ch">Introducció</a>
+</li>
+<li> <a href="../html/festius.html" class="no-ch">Festius</a>
+</li>
+<li class="current-page-parent"> <a href="../html/proces-de-vida-duna-accio-formativa.html" class="daddy">Procés de vida d&#039;una acció formativa</a>
+<ul class="other-section">
+<li> <a href="../html/estat-pendent.html" class="daddy">Estat Pendent</a>
+<ul class="other-section">
+<li> <a href="../html/perfil-gesform.html" class="daddy">Perfil Gesform</a>
+<ul class="other-section">
+<li> <a href="../html/fse-fons-social-europeu.html" class="no-ch">FSE (Fons Social Europeu)</a>
+</li>
+<li> <a href="../html/paa-pla-anual-dactivitats.html" class="no-ch">PAA (Pla Anual d&#039;Activitats)</a>
+</li>
+<li> <a href="../html/baners.html" class="no-ch">Bàners</a>
+</li>
+</ul>
+</li>
+<li> <a href="../html/pressupost.html" class="no-ch">Pressupost</a>
+</li>
+<li> <a href="../html/reviseu.html" class="no-ch">Reviseu</a>
+</li>
+</ul>
+</li>
+<li> <a href="../html/estat-proposta-validacio-e-inscripcio.html" class="no-ch">Estat Proposta, Validació e Inscripció</a>
+</li>
+<li> <a href="../html/estat-confirmacio.html" class="no-ch">Estat Confirmació</a>
+</li>
+<li class="active"> <a href="../html/publicacio-llistat-definitiu.html" class="active no-ch">Publicació Llistat Definitiu</a>
+</li>
+<li> <a href="../html/sincronitzacio-de-participants.html" class="no-ch">Sincronització de Participants</a>
+</li>
+<li> <a href="../html/gestio-baixes-i-altes.html" class="no-ch">Gestió Baixes i Altes</a>
+</li>
+<li> <a href="../html/durant-la-formacio.html" class="no-ch">Durant la Formació</a>
+</li>
+<li> <a href="../html/enquesta-davaluacio.html" class="no-ch">Enquesta d&#039;Avaluació</a>
+</li>
+<li> <a href="../html/estat-avaluacio.html" class="no-ch">Estat Avaluació</a>
+</li>
+<li> <a href="../html/estat-certificacio.html" class="no-ch">Estat Certificació</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li> <a href="../html/gestio-economica.html" class="daddy">Gestió Econòmica</a>
+<ul class="other-section">
+<li> <a href="../html/protocolo-minutas.html" class="no-ch">Protocolo Minutas</a>
+</li>
+<li> <a href="../html/protocolo-facturas.html" class="no-ch">Protocolo Facturas</a>
+</li>
+<li> <a href="../html/protocolo-finalizacion-formaciones.html" class="no-ch">Protocolo Finalización Formaciones</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav><main id="page-mq0ty3ln-ofbnf1bgx" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">CEFIRE IA i Pensament Computacional</p></div>
+<div class="page-header"><h1 class="page-title">Publicació Llistat Definitiu</h1></div>
+</header><div id="page-content-page-mq0ty3ln-ofbnf1bgx" class="page-content">
+<article id="block-mq0s5xgs-h9jzzm8dk" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Gesform</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-mq0s5xgs-7zs7poedd" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-mq0s5xgs-7zs7poedd&quot;}">
+<p>Una vegada finalitzat el període de CONFIRMACIÓ, cal ordenar els participants i publicar les llistes definitives. </p>
+<p>Abans de començar caldrà<strong> Extintor/Despublicar internet</strong> – A la part inferior apareixerà el <span style="color: #ff0000;">quadret</span> de <strong><span style="color: #000000;">Publicar Internet</span></strong> sense marcar. </p>
+<p style="text-align: center;"><img src="../content/resources/image34.png" alt="" width="274" height="380" /><img src="../content/resources/image35.png" alt="" width="322" height="250" /></p>
+<p><br />Una vegada despublicat cal anar a <strong>Extintor/Gestión Solicitud de Participantes</strong></p>
+<p style="text-align: center;"><img src="../content/resources/image37.png" alt="" width="384" height="170" /></p>
+<p>I anem a <strong>ordenar</strong> – deixant els paràmetres que apareixen.</p>
+<p style="text-align: center;">   <img src="../content/resources/image40.png" alt="" width="431" height="248" /></p>
+<p><br />En la columna <strong>Descripción Estado</strong> tindrem als participants segons el seu estat:</p>
+<ul>
+<li><strong>Confirmado</strong> – Confirmat amb plaça</li>
+<li><strong>Conf provisional</strong> – Confirmat sense plaça (espera)</li>
+<li><strong>Excluido</strong></li>
+<li><strong>Inicial</strong> – No han fet res abans estaven en lista d’espera</li>
+<li><strong>Seleccionado</strong> – No han fet res, abans estaven en confirmat</li>
+<li><strong>Renuncia</strong></li>
+</ul>
+<p style="text-align: center;"><strong><img src="../content/resources/image5.png" alt="" width="400" height="267" /></strong></p>
+<p>Mirem si s’ha passat algun en la creació de les llistes provisionals que com a participant tenia el nom del coordinador. Ordenem als participants, si no estem segurs filtrem. Si s’ha fet correctament <span style="color: #ff0000;">no hauria d’estar cap participant amb el nom del/de la Coordinador/a</span>. </p>
+<p>Si queda algú donem doble clic al nom i s’obrirà una finestra amb les dades de la persona que hi ha darrere d’aquesta inscripció. </p>
+<p style="text-align: center;"><img src="../content/resources/image6.png" alt="" width="447" height="352" /></p>
+<p>Copiem el DNI de la persona que hi ha en l’apartat de <strong>Observaciones</strong> i lo copiamos en la casilla del DNI de <strong>Persona (de la mateixa finestra)</strong>, si no apareix és que no és docent o encara no està donat d’alta. Caldria trucar per vore la situació en la que es troba, mirar amb aquesta situació quin barem tindria i <span style="color: #ff0000;">si no entra a l'acció formativa – Eliminar el registre. Si entraria cal demanar-li justificació de la seua situació</span> (per exemple nómina, certificat de secretaria, ovidoc, etc…) i enviar mail per l´alta a:<strong> <a href="mailto:compteformacio@gva.es">compteformacio@gva.es</a> </strong>segons el document <strong>PROTOCOL_INCORPORACIO_DOCENTS_GESFORM_rev270325.pdf</strong> [<a href="./docs/PROTOCOL_INCORPORACIO_DOCENTS_GESFORM_rev270325.pdf" target="_blank" rel="noopener">Descàrrega d'arxiu</a>] i <strong>DADES_INCORPORACIO_DOCENTS_GESFORM_rev270325.pdf </strong>[<a href="./docs/DADES_INCORPORACIO_DOCENTS_GESFORM_rev270325.pdf" target="_blank" rel="noopener">Descàrrega d'arxiu</a>]amb <span style="color: #ff0000;">firma digital</span>. Aquest últim document es pot sustituir pel de <strong>CODI_DADES_PONENTS_NOM.pdf</strong> sempre que tinga la <span style="color: #ff0000;">firma digital</span>.</p>
+<p>Durant la formació hem de revisar que totes les dades dels participants són correctes. És molt important que el nom y cognom dels <strong>participants estiguen en majúscules</strong>. En cas d'haver algú participant en minúscules hem d'enviar un correu a <strong>compteformacio@gva.es</strong>. <span style="color: #ff0000;">Les assessories no podem modificar cap informació de persones en Gesform</span>.</p>
+<p>Una vegada ja tenim tots els participants amb la identitat correcta. Filtrem per <strong>confirmados</strong> i tindrem els confirmats i confirmats provisionals. </p>
+<p style="text-align: center;"><img src="../content/resources/image7.png" alt="" width="465" height="206" /></p>
+<p><strong>Ordenem</strong> de nou per estar segurs.</p>
+<p style="text-align: center;"><img src="../content/resources/image8.png" alt="" width="346" height="137" /></p>
+<p> Deixem tal qual apareixen els paràmetres de l’ordre.</p>
+<p style="text-align: center;"><img src="../content/resources/image9.png" alt="" width="422" height="249" /></p>
+<p> Donem a <strong>Excluir solicitud x solapamiento</strong>, per tal que s’eliminen els participants que actualment están en 3 o més formacions i no podríen fer el curs. A les finestres que apareixen donem a <strong>Aceptar</strong>. </p>
+<p style="text-align: center;"><img src="../content/resources/image10.png" alt="" width="463" height="85" /></p>
+<p style="text-align: center;"><img src="../content/resources/image11.png" alt="" width="498" height="210" /></p>
+<p style="text-align: center;"><img src="../content/resources/image12.png" alt="" width="467" height="175" /></p>
+<p> Mirem les persones que s’han exclòs per vore si tenen els cursos assignats i és correcta l’exclusió (3 cursos). Fem clic en la persona que volem mirar i posteriorment a la part superior a <strong>Ver Solicitudes que interfieren en fechas</strong>. Ens apareixerà la finestra per vore els cursos que té aquesta persona. </p>
+<p style="text-align: center;"><img src="../content/resources/image13.png" alt="" width="666" height="454" /></p>
+<p> <strong>Ordenem</strong> de nou per estar segurs.</p>
+<p style="text-align: center;"><img src="../content/resources/image14.png" alt="" width="1070" height="425" /></p>
+<p> <strong>Marquem</strong> els participants que hi haurà en l’edició (en aquest cas 90), posem el 90 i cliquem en <strong>Marcar Participantes</strong>. </p>
+<p style="text-align: center;"><img src="../content/resources/image57.png" alt="" width="651" height="202" /></p>
+<p><br /> Con los 90 marcados <strong>exportamos</strong> para tener estos participantes.</p>
+<p style="text-align: center;"><img src="../content/resources/image58.png" alt="" width="187" height="79" /></p>
+<p> Donem ara a <strong>Generar Participantes</strong> A les següents finestres donem a <strong>Aceptar</strong>. Finalment donar a <strong>Aplicar</strong>. </p>
+<p style="text-align: center;"> <img src="../content/resources/image59.png" alt="" width="396" height="58" /></p>
+<p style="text-align: center;"><img src="../content/resources/image60.png" alt="" width="421" height="176" />        <img src="../content/resources/image61.png" alt="" width="250" height="176" /></p>
+<p>Apareixeran en <strong>verd</strong> els participants.  </p>
+<p style="text-align: center;"><img src="../content/resources/image62.png" alt="" width="704" height="171" /></p>
+<p><span style="color: #0000ff;">Si ens hem equivocat i has marcat més participants o li has donat dos cops i hi ha el doble de participants en verd. Caldria eliminar-los tots i tornar a començar, per traure el verd, marquem el nombre de participants que tens en ver i apliquem. Així els eliminaria. </span></p>
+<p><br /> Finalment comprovar que estén en <strong>Extintor – Participantes Edición</strong></p>
+<p>Si l’acció formativa necessita Aules hem de <strong>SINCRONIZAR els participants</strong> per a que ixquen en Aules. <span style="color: #ff0000;">(Següent apartat)</span>.</p>
+<p><br /> Tornar a <strong>publicar</strong>. Comprovar que s’han publicat en la web les llistes. </p>
+<p> Una vegada publicat,  cal enviar correu als participants per indicar que ja estan els llistats definitius. Model de <strong>correu</strong> a continuació.</p>
+<p>El text per la redacció d’aquest correu és el següent:</p>
+</div>
+</div>
+</article><article id="block-mq0s5xgt-5plwndawp" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Example Correu Llista definitiva</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-mq0s5xgt-n6l8brvlb" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-mq0s5xgt-n6l8brvlb&quot;}">
+<p><button class="botonCopiar">📋 Copiar texto</button></p>
+<p class="textoACopiar">Benvolguts i benvolgudes,<br /><br />Ja està disponible la <strong>llista definitiva</strong> de professorat admés a l'acció formativa "<strong>CODI – TITOL</strong>”<br /><br /><strong>Informació de l'acció formativa:</strong><br />https://cefire.edu.gva.es/sfp/index.php?seccion=edicion&id=11897023&usuario=formacion&idioma=va<br /><br /><strong>Llista definitiva:</strong><br />https://cefire.edu.gva.es/sfp/index.php?seccion=inscripciones/definitivo&id=11897023&usuario=formacion&idioma=va<br /><br />Recordeu que es tracta d'un <span style="background-color: #ffff00;"><strong>curs en línia de 30h</strong> que tindrà lloc entre el <strong>22 d'abril i el 9 de juny de 2026</strong>.</span><br /><br />Les persones participants rebreu informació per accedir a l'aula virtual <strong>Aules.</strong> <span style="background-color: #ffcc99;">Informem que a causa de l'alta demanda de l'acció formativa teniu <span style="color: #ff0000;">3 dies</span> a partir de la data d'inici del curs per a <span style="color: #ff0000;">renunciar</span> sense penalització i puguem cridar a participants que es troben en llista d'espera.</span><br /><br />Si voleu fer alguna consulta, envieu un correu als coordinadors:<br />nombre@edu.gva.es, nombre@edu.gva.es o s.nombre@edu.gva.es<br /><br />Salutacions,<br /><br />XX i YY<br />__________<br /><br />Bienvenidos y bienvenidas,<br /><br />Ya está disponible la lista definitiva de profesorado admitido a la acción formativa "<strong>CODIGO – TITULO</strong>”<br /><br /><strong>Información de la acción formativa:</strong><br />https://cefire.edu.gva.es/sfp/index.php?seccion=edicion&id=11897023&usuario=formacion<br /><br /><strong>Lista definitiva:</strong><br />https://cefire.edu.gva.es/sfp/index.php?seccion=inscripciones/definitivo&id=11897023&usuario=formacion<br /><br />Recordáis que se trata de un <span style="background-color: #ffff00;"><strong>curso en línea de 30h</strong> que tendrá lugar entre el <strong>22 de abril y el 9 de junio de 2026</strong>.</span><br /><br />Las persones participantes recibiréis información para acceder en el aula virtual <strong>Aules.</strong> <span style="background-color: #ffcc99;">Informamos que a causa del alta demanda de la acción formativa tenéis <span style="color: #ff0000;">3 días</span> a partir de la fecha de inicio del curso para <span style="color: #ff0000;">renunciar</span> sin penalización y podamos llamar a participantes que se encuentran en lista de espera.</span><br /><br />Si queréis hacer alguna consulta, enviáis un correo a los coordinadores:<br />nombre@edu.gva.es, nombre@edu.gva.es o s.nombre@edu.gva.es<br /><br />Saludos,<br /><br />XX y YY</p>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/estat-confirmacio.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/sincronitzacio-de-participants.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-nc-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="license">Creative Commons: Reconocimiento - no comercial - compartir igual 4.0</a></p>
+</div>
+</div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(nueva ventana)</span></span></a></p>
+</body>
+</html>
