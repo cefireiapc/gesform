@@ -1,21 +1,17 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es" id="exe-page-mq0s5xgp-gnhn55xrl">
 <head>
-<link rel="stylesheet" type="text/css" href="base.css" />
-<link rel="stylesheet" type="text/css" href="content.css" />
-<link rel="stylesheet" type="text/css" href="nav.css" />
-<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
-<title>Pressupost | CEFIRE IA i Pensament Computacional </title>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<meta name="author" content="Moisés Moreno Rando" />
-<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
-<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
-<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
-<script type="text/javascript" src="exe_jquery.js"></script>
-<script type="text/javascript" src="common_i18n.js"></script>
-<script type="text/javascript" src="common.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Script para copiar el contenido de #textoACopiar al portapapeles (sin alert) -->
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+<title>Pressupost | CEFIRE IA i Pensament Computacional</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<meta name="description" content="Manual y documentación del CEFIRE">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+<!-- Script para copiar el contenido de #textoACopiar al portapapeles (sin alert) -->
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   // Selecciona todos los botones de copiar
@@ -40,18 +36,16 @@ document.addEventListener('DOMContentLoaded', function(){
     pointer-events: none;
   `;
   document.body.appendChild(toast);
-
   // Función para mostrar el toast
   function showToast(){
     toast.style.opacity = '1';
     toast.style.transform = 'translateY(0)';
     clearTimeout(toast._t);
     toast._t = setTimeout(()=>{
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(8px)';
+ toast.style.opacity = '0';
+ toast.style.transform = 'translateY(8px)';
     }, 1800);
   }
-
   // Función de respaldo para copiar texto usando textarea (para navegadores antiguos o restricciones de iframe)
   async function fallbackCopyText(text){
     const ta = document.createElement('textarea');
@@ -61,159 +55,177 @@ document.addEventListener('DOMContentLoaded', function(){
     document.body.appendChild(ta);
     ta.select(); // Selecciona el texto en el textarea
     try { 
-      document.execCommand('copy'); // Intenta copiar
-      document.body.removeChild(ta); // Elimina el textarea
-      return true; 
+ document.execCommand('copy'); // Intenta copiar
+ document.body.removeChild(ta); // Elimina el textarea
+ return true; 
     } catch(e){ 
-      document.body.removeChild(ta); 
-      console.error(e); 
-      return false; 
+ document.body.removeChild(ta); 
+ console.error(e); 
+ return false; 
     }
   }
-
   // Función principal para copiar texto al portapapeles
   async function copyTextToClipboard(text){
     // Intenta usar la API Clipboard de forma asíncrona
     if(navigator.clipboard && navigator.clipboard.writeText){
-      try{ 
-        await navigator.clipboard.writeText(text); 
-        return true; 
-      } catch(e){ 
-        console.warn('Error al usar navigator.clipboard.writeText:', e); 
-      }
+ try{ 
+   await navigator.clipboard.writeText(text); 
+   return true; 
+ } catch(e){ 
+   console.warn('Error al usar navigator.clipboard.writeText:', e); 
+ }
     }
     // Si falla o no está disponible, usa la función de respaldo
     return await fallbackCopyText(text);
   }
-
   // Itera sobre todos los botones para añadir el event listener
   botones.forEach(boton=>{
     boton.addEventListener('click', async function(e){
-      e.preventDefault(); // Previene la acción por defecto del botón
-      // Encuentra el ancestro más cercano que sea un 'article' (o '.iDevice_wrapper')
-      const articleWrapper = boton.closest('article.iDevice_wrapper');
-      if (!articleWrapper) {
-          console.error("No se encontró el contenedor 'article.iDevice_wrapper' para el botón.");
-          return;
-      }
-      // Busca el elemento con la clase .textoACopiar dentro de ese contenedor 'article'
-      const textoElem = articleWrapper.querySelector('.textoACopiar');
-      const texto = (textoElem?.innerText || textoElem?.textContent || '').trim(); // Obtiene el texto y lo limpia
-      
-      if(!texto) {
-        console.warn('No hay texto para copiar en este bloque.');
-        return;
-      }
-      
-      const ok = await copyTextToClipboard(texto); // Intenta copiar el texto
-      if(ok) showToast(); // Si se copió con éxito, muestra el toast
+ e.preventDefault(); // Previene la acción por defecto del botón
+ // Encuentra el ancestro más cercano que sea un 'article' (o '.iDevice_wrapper')
+ const articleWrapper = boton.closest('article.iDevice_wrapper');
+ if (!articleWrapper) {
+console.error("No se encontró el contenedor 'article.iDevice_wrapper' para el botón.");
+return;
+ }
+ // Busca el elemento con la clase .textoACopiar dentro de ese contenedor 'article'
+ const textoElem = articleWrapper.querySelector('.textoACopiar');
+ const texto = (textoElem?.innerText || textoElem?.textContent || '').trim(); // Obtiene el texto y lo limpia
+ 
+ if(!texto) {
+   console.warn('No hay texto para copiar en este bloque.');
+   return;
+ }
+ 
+ const ok = await copyTextToClipboard(texto); // Intenta copiar el texto
+ if(ok) showToast(); // Si se copió con éxito, muestra el toast
     });
   });
 });
-</script></head>
-<body class="exe-web-site" id="exe-node-10"><script type="text/javascript">document.body.className+=" js"</script>
-<div id="content">
-<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
-<header id="header" ><div id="headerContent">CEFIRE IA i Pensament Computacional</div></header>
-<nav id="siteNav">
+</script>
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mq0s5xgp-gnhn55xrl" id="skipNav">Skip to content</a> <nav id="siteNav">
 <ul>
-   <li><a href="index.html" class="daddy main-node">CEFIRE IA i Pensament Computacional</a></li>
-   <li><a href="sessi_teams.html" class="no-ch">Sessió Teams</a></li>
-   <li><a href="dietes_gva.html" class="no-ch">Dietes GVA</a></li>
-   <li class="current-page-parent"><a href="acci_formativa.html" class="current-page-parent daddy">Acció Formativa</a>
-   <ul>
-      <li><a href="introducci.html" class="no-ch">Introducció</a></li>
-      <li><a href="festius.html" class="no-ch">Festius</a></li>
-      <li class="current-page-parent"><a href="procs_de_vida_duna_acci_formativa.html" class="current-page-parent daddy">Procés de vida d'una acció formativa</a>
-      <ul>
-         <li class="current-page-parent"><a href="estat_pendent.html" class="current-page-parent daddy">Estat Pendent</a>
-         <ul>
-            <li><a href="perfil_gesform.html" class="daddy">Perfil Gesform</a>
-            <ul class="other-section">
-               <li><a href="fse_fons_social_europeu.html" class="no-ch">FSE (Fons Social Europeu)</a></li>
-               <li><a href="paa_pla_anual_dactivitats.html" class="no-ch">PAA (Pla Anual d'Activitats)</a></li>
-               <li><a href="bners.html" class="no-ch">Bàners</a></li>
-            </ul>
-            </li>
-            <li id="active"><a href="pressupost.html" class="active no-ch">Pressupost</a></li>
-            <li><a href="reviseu.html" class="no-ch">Reviseu</a></li>
-         </ul>
-         </li>
-         <li><a href="estat_proposta_validaci_e_inscripci.html" class="no-ch">Estat Proposta, Validació e Inscripció</a></li>
-         <li><a href="estat_confirmaci.html" class="no-ch">Estat Confirmació</a></li>
-         <li><a href="publicaci_llistat_definitiu.html" class="no-ch">Publicació Llistat Definitiu</a></li>
-         <li><a href="sincronitzaci_de_participants.html" class="no-ch">Sincronització de Participants</a></li>
-         <li><a href="gesti_baixes_i_altes.html" class="no-ch">Gestió Baixes i Altes</a></li>
-         <li><a href="durant_la_formaci.html" class="no-ch">Durant la Formació</a></li>
-         <li><a href="enquesta_davaluaci.html" class="no-ch">Enquesta d'Avaluació</a></li>
-         <li><a href="estat_avaluaci.html" class="no-ch">Estat Avaluació</a></li>
-         <li><a href="estat_certificaci.html" class="no-ch">Estat Certificació</a></li>
-      </ul>
-      </li>
-   </ul>
-   </li>
-   <li><a href="gesti_econmica.html" class="daddy">Gestió Econòmica</a>
-   <ul class="other-section">
-      <li><a href="protocolo_minutas.html" class="no-ch">Protocolo Minutas</a></li>
-      <li><a href="protocolo_facturas.html" class="no-ch">Protocolo Facturas</a></li>
-      <li><a href="protocolo_finalizacin_formaciones.html" class="no-ch">Protocolo Finalización Formaciones</a></li>
-   </ul>
-   </li>
+<li> <a href="../index.html" class="main-node no-ch">CEFIRE IA i Pensament Computacional</a>
+</li>
+<li> <a href="../html/sessio-teams.html" class="no-ch">Sessió Teams</a>
+</li>
+<li> <a href="../html/dietes-gva.html" class="no-ch">Dietes GVA</a>
+</li>
+<li class="current-page-parent"> <a href="../html/accio-formativa.html" class="daddy">Acció Formativa</a>
+<ul class="other-section">
+<li> <a href="../html/introduccio.html" class="no-ch">Introducció</a>
+</li>
+<li> <a href="../html/festius.html" class="no-ch">Festius</a>
+</li>
+<li class="current-page-parent"> <a href="../html/proces-de-vida-duna-accio-formativa.html" class="daddy">Procés de vida d&#039;una acció formativa</a>
+<ul class="other-section">
+<li class="current-page-parent"> <a href="../html/estat-pendent.html" class="daddy">Estat Pendent</a>
+<ul class="other-section">
+<li> <a href="../html/perfil-gesform.html" class="daddy">Perfil Gesform</a>
+<ul class="other-section">
+<li> <a href="../html/fse-fons-social-europeu.html" class="no-ch">FSE (Fons Social Europeu)</a>
+</li>
+<li> <a href="../html/paa-pla-anual-dactivitats.html" class="no-ch">PAA (Pla Anual d&#039;Activitats)</a>
+</li>
+<li> <a href="../html/baners.html" class="no-ch">Bàners</a>
+</li>
 </ul>
-</nav>
-<div id='topPagination'>
-<nav class="pagination noprt">
-<a href="bners.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="reviseu.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
-</nav>
-</div>
-<div id="main-wrapper">
-<section id="main">
-<header id="nodeDecoration"><h1 id="nodeTitle">Pressupost</h1></header>
-<article class="iDevice_wrapper textIdevice em_iDevice" id="id35">
-<div class="iDevice emphasis1" >
-<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Gesform</h1></header>
-<div class="iDevice_inner">
-<div class="iDevice_content_wrapper">
-<div id="ta35_151_2" class="block iDevice_content">
-<div class="exe-text"><p>Per últim abans de portar a validar per part del director anem a la <strong>icona que hi ha al costat de Apuntes</strong></p>
-<p><img src="image119.png" alt="" width="85" height="45" style="display: block; margin-left: auto; margin-right: auto;" />I triem l’opció <strong>Presupuesto</strong></p>
-<p style="text-align: center;"><strong><img src="image117.png" alt="" width="255" height="128" /></strong></p>
+</li>
+<li class="active"> <a href="../html/pressupost.html" class="active no-ch">Pressupost</a>
+</li>
+<li> <a href="../html/reviseu.html" class="no-ch">Reviseu</a>
+</li>
+</ul>
+</li>
+<li> <a href="../html/estat-proposta-validacio-e-inscripcio.html" class="no-ch">Estat Proposta, Validació e Inscripció</a>
+</li>
+<li> <a href="../html/estat-confirmacio.html" class="no-ch">Estat Confirmació</a>
+</li>
+<li> <a href="../html/publicacio-llistat-definitiu.html" class="no-ch">Publicació Llistat Definitiu</a>
+</li>
+<li> <a href="../html/sincronitzacio-de-participants.html" class="no-ch">Sincronització de Participants</a>
+</li>
+<li> <a href="../html/gestio-baixes-i-altes.html" class="no-ch">Gestió Baixes i Altes</a>
+</li>
+<li> <a href="../html/durant-la-formacio.html" class="no-ch">Durant la Formació</a>
+</li>
+<li> <a href="../html/enquesta-davaluacio.html" class="no-ch">Enquesta d&#039;Avaluació</a>
+</li>
+<li> <a href="../html/estat-avaluacio.html" class="no-ch">Estat Avaluació</a>
+</li>
+<li> <a href="../html/estat-certificacio.html" class="no-ch">Estat Certificació</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li> <a href="../html/gestio-economica.html" class="daddy">Gestió Econòmica</a>
+<ul class="other-section">
+<li> <a href="../html/protocolo-minutas.html" class="no-ch">Protocolo Minutas</a>
+</li>
+<li> <a href="../html/protocolo-facturas.html" class="no-ch">Protocolo Facturas</a>
+</li>
+<li> <a href="../html/protocolo-finalizacion-formaciones.html" class="no-ch">Protocolo Finalización Formaciones</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav><main id="page-mq0s5xgp-gnhn55xrl" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">CEFIRE IA i Pensament Computacional</p></div>
+<div class="page-header"><h1 class="page-title">Pressupost</h1></div>
+</header><div id="page-content-page-mq0s5xgp-gnhn55xrl" class="page-content">
+<article id="block-mq0s5xgs-jtfpmlvo2" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Gesform</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-mq0s5xgs-x3iotgrqy" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-mq0s5xgs-x3iotgrqy&quot;}">
+<p>Per últim abans de portar a validar per part del director anem a la <strong>icona que hi ha al costat de Apuntes</strong></p>
+<p><img src="../content/resources/image119.png" alt="" width="85" height="45" style="display: block; margin-left: auto; margin-right: auto;" />I triem l’opció <strong>Presupuesto</strong></p>
+<p style="text-align: center;"><strong><img src="../content/resources/image117.png" alt="" width="255" height="128" /></strong></p>
 <p>Afegim nou registre i omplim la informació</p>
-<p style="text-align: center;"><img src="image118.png" alt="" width="973" height="134" /></p>
-<p><strong>Código</strong>: el tractem a continuació<br /><strong>Importe</strong>: Import que es preveu gastar en la formació.<br /><strong>Descripción</strong>: Breu descripció del curs i de les seues característiques (tarifa aplicada segon la Tarifa 2025 y Annexos)</p></div>
+<p style="text-align: center;"><img src="../content/resources/image118.png" alt="" width="973" height="134" /></p>
+<p><strong>Código</strong>: el tractem a continuació<br /><strong>Importe</strong>: Import que es preveu gastar en la formació.<br /><strong>Descripción</strong>: Breu descripció del curs i de les seues característiques (tarifa aplicada segon la Tarifa 2025 y Annexos)</p>
 </div>
 </div>
-</div>
-</div>
-</article>
-<article class="iDevice_wrapper textIdevice em_iDevice" id="id36">
-<div class="iDevice emphasis1" >
-<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Código</h1></header>
-<div class="iDevice_inner">
-<div class="iDevice_content_wrapper">
-<div id="ta36_152_2" class="block iDevice_content">
-<div class="exe-text"><p>Els conceptes dels gastos són línia a línia inclòs material.</p>
+</article><article id="block-mq0s5xgs-pxxni1idh" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Código</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-mq0s5xgs-rm3tpf4gt" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-mq0s5xgs-rm3tpf4gt&quot;}">
+<div class="exe-text-template">
+    <p>Els conceptes dels gastos són línia a línia inclòs material.</p>
 <p><span style="color: #ff0000;">Les <strong>Minutes</strong> porten un <strong>15% de IRPF</strong>.</span></p>
 <p><span style="color: #ff0000;">Les <strong>Factures</strong> pot o no portar el <strong>15% de IRPF</strong> però es questió de l'empresa.</span></p>
-<p><span style="color: #ff0000;"></span></p>
+<p><span style="color: #ff0000;"></span><br /></p>
 <p>Necessitem per a <strong>Minutes de funcionaris i/o dietes, Minutes NO funcionaris i Factures. </strong></p>
-<p>          <strong>25COXXNIXXX_FITXAECONOMICA.xlsx</strong> [<a href="./docs/CODI_FITXAECONOMICA.xlsx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>] (en <span style="color: #ff0000;">observacions</span> posem si és <span style="color: #ff0000;">funcionari docent GVA</span> o <span style="color: #ff0000;">NO és funcionari GVA</span> per a facilitar la documentació a                                                                                              Intervenció Econòmica).<br />          <strong>25COXXNIXXX_FITXAECONOMICA.pdf</strong> (amb <span style="color: #ff0000;">firma digital</span> de l'assessor/a)</p>
+<p>          <strong>25COXXNIXXX_FITXAECONOMICA.xlsx</strong> [<a href="./docs/CODI_FITXAECONOMICA.xlsx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>] (en <span style="color: #ff0000;">observacions</span> posem si és <span style="color: #ff0000;">funcionari docent GVA</span> o <span style="color: #ff0000;">NO és funcionari GVA</span> per a facilitar la documentació a Intervenció Econòmica).<br />          <strong>25COXXNIXXX_FITXAECONOMICA.pdf</strong> (amb <span style="color: #ff0000;">firma digital</span> de l'assessor/a)</p>
+<p>         <code> NO és funcionari GVA: </code>Professorat de la concertada | Professorat de la Universitat.</p>
 <p>          Per a la Fitxa Económica hem de revisar les tarifes i exemples a:</p>
 <p>                     - <strong>TARIFAS_JUNIO_2025.pdf </strong>[<a href="./docs/TARIFAS_JUNIO_ 2025.pdf" target="_blank" rel="noopener">Descàrrega d'arxiu</a>]<br />                     - <strong>ANEXO_TARIFAS_2025.pdf </strong>[<a href="./docs/ANEXO_TARIFAS_2025.pdf" target="_blank" rel="noopener">Descàrrega d'arxiu</a>]</p>
 <p style="padding-left: 30px;">    i recordéu <span style="color: #ff0000;">alta en PROPER</span> (molt important perquè caduca a los 6 mesos)<br />    Enllaç PROPER: <a href="https://www.gva.es/es/inicio/procedimientos?id_proc=22648" target="_blank" rel="noopener">https://www.gva.es/es/inicio/procedimientos?id_proc=22648</a></p>
 <p> </p>
 <p>A més, necessitem per a <strong>Minutes de NO funcionaris</strong> (sense factura):</p>
 <p style="padding-left: 30px;"><strong>25COXXNIXXX_INFORME_NECESSITATS_NOFUNCIONARI.docx </strong>[<a href="./docs/CODI_INFORME_NECESSITATS_NOFUNCIONARI.docx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>]<br /><strong>25COXXNIXXX_INFORME_NECESSITATS_NOFUNCIONARI.pdf</strong></p>
-<p style="padding-left: 30px;"><strong></strong></p>
+<p style="padding-left: 30px;"><strong></strong><br /></p>
 <p>En cas, de <strong>Factures</strong> Empresa/Autònom o Entitat Col·laboradora GVA o Universitat:</p>
 <p style="padding-left: 30px;"><strong>25COXXNIXXX_INFORME_NECESSITATS.docx </strong>[<a href="./docs/CODI_INFORME_NECESSITATS.docx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>]<br /><strong>25COXXNIXXX_INFORME_NECESSITATS.pdf</strong></p>
 <p style="padding-left: 30px;"><strong>25COXXNIXXX_FACTURA_PROFORMA_NOMBRE.pdf </strong>(més a baix)</p>
-<p><strong><span style="text-decoration: underline;"></span></strong></p>
-<p><strong><span style="text-decoration: underline;"></span></strong></p>
+<p><strong><span style="text-decoration: underline;"></span></strong><br /></p>
+<p><strong><span style="text-decoration: underline;"></span></strong><br /></p>
 <p><strong><span style="text-decoration: underline;">Per accions formatives PAA a cost 0</span></strong></p>
 <p style="padding-left: 30px;">Possarem en Pressupost <strong>0.01</strong> (per indicar que no s'ha oblidat possar el pressupost)</p>
-<p><span style="text-decoration: underline;"><strong></strong></span></p>
-<p><span style="text-decoration: underline;"><strong></strong></span></p>
+<p><span style="text-decoration: underline;"><strong></strong></span><br /></p>
+<p><span style="text-decoration: underline;"><strong></strong></span><br /></p>
 <p><span style="text-decoration: underline;"><strong>Per a funcionaris docents</strong></span></p>
 <ul>
 <li><strong>23302</strong>    Gastos de formación del personal docente</li>
@@ -224,8 +236,8 @@ document.addEventListener('DOMContentLoaded', function(){
 <li><strong>231.02</strong>    Locomoción, gastos de transporte personal funcionario</li>
 </ul>
 <p>       <span style="color: #ff0000;">Agència TRANSVIA</span>, en la factura ha d'apareixer: codi formació, CEFIRE, i totes les dades.</p>
-<p></p>
-<p></p>
+<p><br /></p>
+<p><br /></p>
 <p><span style="text-decoration: underline;"><strong>Per empreses/autònoms, persones NO funcionaris (<span style="color: #ff0000; text-decoration: underline;">no hi han DIETES de Restauració</span>)</strong></span></p>
 <ul>
 <li><strong>226.06</strong> Gastos diversos, Reuniones, conferencias, celebración de actos y cursos </li>
@@ -236,16 +248,16 @@ document.addEventListener('DOMContentLoaded', function(){
 <p style="padding-left: 60px;"><br style="padding-left: 60px;" /><br /><strong>Factura Proforma</strong> amb les dades del CEFIRE i amb la informació de l’acció formativa:</p>
 <p style="padding-left: 60px;">dades de l'empresa<br />dades del CEFIRE<br />dades de l'acció formativa: codi, títol, dates, modalitat, hores total, nº participants, preu unitat, import brut, import total, etc…) <br />IVA corresponent: cal afegir la coletilla "<strong>Factura exenta de IVA según art. 20.1.9 de la ley 37-1992 de 28 de diciembre</strong>" si l'empresa està exempta d'IVA. <br />Número de compte bancari on s'ha de fer el pagament<br /><br /></p>
 <p style="padding-left: 60px;"><strong>Factura proforma → Contracte menor (amb nº expedient</strong>, <span style="color: #ff0000;">aquest nº d'expedient es molt important per fer la factura a FACE</span>)<br />(Enviar Factura Proforma a: <a href="mailto:nombre@edu.gva.es)">nombre@edu.gva.es)</a></p>
-<p style="padding-left: 60px;"></p>
+<p style="padding-left: 60px;"><br /></p>
 <p style="padding-left: 60px;"><span style="text-decoration: underline;">Example de Factura Proforma o Pressupost</span></p>
-<p style="padding-left: 60px; text-align: center;"><img src="cefire-face-proforma.png" alt="" width="537" height="705" /></p>
+<p style="padding-left: 60px; text-align: center;"><img src="../content/resources/cefire-face-proforma.png" alt="" width="537" height="705" /></p>
 <p style="padding-left: 60px;"><span style="text-decoration: underline;">Example de Factura a FACE (sincronitzat amb NETFIS)</span></p>
 <p style="padding-left: 60px;">Cal detallar les instruccions per a pujar la factura a la plataforma FACE, que és la plataforma de gestió de factures electròniques del Ministeri d'Hisenda. És important que l'empresa tinga un usuari registrat en aquesta plataforma i que puga pujar la factura correctament. <br /><br /><span style="color: #ff0000;"><strong>Cal insistir que la factura no es pot pujar a la plataforma FACE fins que no s'haja finalitzat la formació.</strong></span></p>
-<p style="padding-left: 60px;"><span style="color: #000000;"></span></p>
+<p style="padding-left: 60px;"><span style="color: #000000;"></span><br /></p>
 <p style="padding-left: 60px;"><span style="color: #000000;">Podem enviar a l'empresa el <strong>Manual_detallado_FACE.pdf</strong> [<a href="./docs/Manual_detallado_FACE.pdf" target="_blank" rel="noopener">Descàrrega d'arxiu</a>] i el <strong>Video_explicatiu_FACE.docx</strong> [<a href="./docs/Video_explicatiu_FACE.docx" target="_blank" rel="noopener">Descàrrega d'arxiu</a>] per a facilitar el seu ús.</span></p>
-<p style="padding-left: 60px;"></p>
+<p style="padding-left: 60px;"><br /></p>
 <p style="padding-left: 60px;">Important que aparega el <span style="color: #ff0000;">nº expedient del contracte menor</span> dau des del CEFIRE</p>
-<p style="padding-left: 60px;"><strong><img src="cefire-face.png" alt="" width="647" height="772" style="display: block; margin-left: auto; margin-right: auto;" /></strong></p>
+<p style="padding-left: 60px;"><strong><img src="../content/resources/cefire-face.png" alt="" width="647" height="772" style="display: block; margin-left: auto; margin-right: auto;" /></strong></p>
 <p style="padding-left: 30px;"><strong>Observacions</strong></p>
 <ul>
 <li>Si Factura empresa/autònom &gt; 3000 euros → obligada a factura FACE (demanar resguard FACE a la empresa/autònom). Si no factura proforma. <br />FACE se sincroniza con NETFIS.<br /><br /></li>
@@ -255,21 +267,19 @@ document.addEventListener('DOMContentLoaded', function(){
 <p>                                             *<strong>AAPP y PAA</strong> no fa falta 3 pressupostos.</p>
 <ul></ul>
 <p> </p>
-<p>I <strong>apliquem i aceptem</strong>.</p></div>
-</div>
+<p>I <strong>apliquem i aceptem</strong>.</p>
 </div>
 </div>
 </div>
 </article>
-<div id="packageLicense" class="cc cc-by-nc-sa">
-<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Reconocimiento No comercial Compartir igual 4.0</a></p>
+</div></main><div class="nav-buttons">
+<a href="../html/baners.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/reviseu.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
 </div>
-</section>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-nc-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="license">Creative Commons: Reconocimiento - no comercial - compartir igual 4.0</a></p>
 </div>
-<div id='bottomPagination'>
-<nav class="pagination noprt">
-<a href="bners.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="reviseu.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
-</nav>
+</div></footer>
 </div>
-</div>
-<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(nueva ventana)</span></span></a></p>
+</body>
+</html>
